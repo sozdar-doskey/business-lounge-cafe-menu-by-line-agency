@@ -63,4 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on scroll and initial load
     window.addEventListener('scroll', checkScroll);
     checkScroll();
+
+
 });
