@@ -4,172 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wan Lounge Menu</title>
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="/api/placeholder/150/150" alt="Wan Lounge Logo" class="logo">
+        <img src="/api/placeholder/120/120" alt="Wan Lounge Logo" class="logo">
         <h1>Wan Lounge</h1>
         <p>Experience Luxury & Taste</p>
     </header>
     
     <div class="container">
-        <nav>
-            <button class="nav-btn active" data-section="drinks">Drinks</button>
-            <button class="nav-btn" data-section="food">Food</button>
-            <button class="nav-btn" data-section="hookah">Hookah</button>
-            <button class="nav-btn" data-section="specials">Specials</button>
-        </nav>
-        
-        <div id="drinks" class="menu-section active">
-            <h2>Drinks Menu</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Signature Cocktail" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Signature Wan Cocktail</h3>
-                        <p class="menu-item-price">$14</p>
-                        <p class="menu-item-description">Our exclusive blend with premium vodka, exotic fruits, and a hint of mint.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Premium Whiskey" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Premium Whiskey Selection</h3>
-                        <p class="menu-item-price">$18</p>
-                        <p class="menu-item-description">Aged to perfection, served neat or on the rocks with artisanal ice.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Champagne" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Luxury Champagne</h3>
-                        <p class="menu-item-price">$120</p>
-                        <p class="menu-item-description">Premium bottle service with our finest champagne selection.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Mocktail" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Exotic Mocktails</h3>
-                        <p class="menu-item-price">$10</p>
-                        <p class="menu-item-description">Refreshing non-alcoholic beverages crafted with premium ingredients.</p>
-                    </div>
-                </div>
+        <div class="categories">
+            <div class="category" data-section="drinks">
+                <img src="/api/placeholder/150/150" alt="Drinks">
+                <div class="category-overlay">Drinks</div>
+            </div>
+            <div class="category" data-section="food">
+                <img src="/api/placeholder/150/150" alt="Food">
+                <div class="category-overlay">Food</div>
+            </div>
+            <div class="category" data-section="hookah">
+                <img src="/api/placeholder/150/150" alt="Hookah">
+                <div class="category-overlay">Hookah</div>
+            </div>
+            <div class="category" data-section="specials">
+                <img src="/api/placeholder/150/150" alt="Specials">
+                <div class="category-overlay">Specials</div>
             </div>
         </div>
         
-        <div id="food" class="menu-section">
-            <h2>Food Menu</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Appetizer Platter" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Luxury Appetizer Platter</h3>
-                        <p class="menu-item-price">$28</p>
-                        <p class="menu-item-description">Selection of gourmet appetizers perfect for sharing.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Sushi" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Premium Sushi Selection</h3>
-                        <p class="menu-item-price">$32</p>
-                        <p class="menu-item-description">Freshly prepared sushi with the finest ingredients.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Wagyu Sliders" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Wagyu Beef Sliders</h3>
-                        <p class="menu-item-price">$24</p>
-                        <p class="menu-item-description">Premium Japanese Wagyu beef mini burgers with truffle aioli.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Dessert" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Decadent Dessert Trio</h3>
-                        <p class="menu-item-price">$16</p>
-                        <p class="menu-item-description">Three signature desserts crafted by our award-winning pastry chef.</p>
-                    </div>
-                </div>
+        <div class="menu-container">
+            <div id="drinks-header" class="menu-header">
+                <h2>Drinks Menu</h2>
             </div>
-        </div>
-        
-        <div id="hookah" class="menu-section">
-            <h2>Hookah Menu</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Premium Hookah" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Premium Hookah Experience</h3>
-                        <p class="menu-item-price">$65</p>
-                        <p class="menu-item-description">Our signature hookah with premium tobacco blends and artisanal craftsmanship.</p>
+            <div id="drinks" class="menu-section active">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Signature Cocktail" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Signature Wan Cocktail</h3>
+                            <p class="menu-item-price">$14</p>
+                            <p class="menu-item-description">Our exclusive blend with premium vodka, exotic fruits, and a hint of mint.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Premium Whiskey" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Premium Whiskey Selection</h3>
+                            <p class="menu-item-price">$18</p>
+                            <p class="menu-item-description">Aged to perfection, served neat or on the rocks with artisanal ice.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Champagne" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Luxury Champagne</h3>
+                            <p class="menu-item-price">$120</p>
+                            <p class="menu-item-description">Premium bottle service with our finest champagne selection.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Mocktail" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Exotic Mocktails</h3>
+                            <p class="menu-item-price">$10</p>
+                            <p class="menu-item-description">Refreshing non-alcoholic beverages crafted with premium ingredients.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Fruit Hookah" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Exotic Fruit Hookah</h3>
-                        <p class="menu-item-price">$80</p>
-                        <p class="menu-item-description">Refreshing hookah served with exotic fruit blends and premium base.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="VIP Hookah" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">VIP Luxury Hookah</h3>
-                        <p class="menu-item-price">$120</p>
-                        <p class="menu-item-description">The ultimate experience with our finest hookah and exclusive tobacco blends.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Special Blend" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Signature Blend</h3>
-                        <p class="menu-item-price">$30</p>
-                        <p class="menu-item-description">Add our house signature blend to any hookah for an enhanced experience.</p>
-                    </div>
-                </div>
+                <button class="back-to-top">Back to Categories</button>
             </div>
-        </div>
-        
-        <div id="specials" class="menu-section">
-            <h2>Special Offers</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="VIP Package" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">VIP Lounge Package</h3>
-                        <p class="menu-item-price">$350</p>
-                        <p class="menu-item-description">Exclusive VIP section with premium bottle service, hookah, and appetizer selection.</p>
+            
+            <div id="food-header" class="menu-header" style="display: none;">
+                <h2>Food Menu</h2>
+            </div>
+            <div id="food" class="menu-section">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Appetizer Platter" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Luxury Appetizer Platter</h3>
+                            <p class="menu-item-price">$28</p>
+                            <p class="menu-item-description">Selection of gourmet appetizers perfect for sharing.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Sushi" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Premium Sushi Selection</h3>
+                            <p class="menu-item-price">$32</p>
+                            <p class="menu-item-description">Freshly prepared sushi with the finest ingredients.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Wagyu Sliders" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Wagyu Beef Sliders</h3>
+                            <p class="menu-item-price">$24</p>
+                            <p class="menu-item-description">Premium Japanese Wagyu beef mini burgers with truffle aioli.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Dessert" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Decadent Dessert Trio</h3>
+                            <p class="menu-item-price">$16</p>
+                            <p class="menu-item-description">Three signature desserts crafted by our award-winning pastry chef.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Ladies Night" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Ladies Night Special</h3>
-                        <p class="menu-item-price">Thursdays</p>
-                        <p class="menu-item-description">Complimentary signature cocktails for ladies from 8pm to 10pm every Thursday.</p>
+                <button class="back-to-top">Back to Categories</button>
+            </div>
+            
+            <div id="hookah-header" class="menu-header" style="display: none;">
+                <h2>Hookah Menu</h2>
+            </div>
+            <div id="hookah" class="menu-section">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Premium Hookah" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Premium Hookah Experience</h3>
+                            <p class="menu-item-price">$65</p>
+                            <p class="menu-item-description">Our signature hookah with premium tobacco blends and artisanal craftsmanship.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Fruit Hookah" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Exotic Fruit Hookah</h3>
+                            <p class="menu-item-price">$80</p>
+                            <p class="menu-item-description">Refreshing hookah served with exotic fruit blends and premium base.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="VIP Hookah" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">VIP Luxury Hookah</h3>
+                            <p class="menu-item-price">$120</p>
+                            <p class="menu-item-description">The ultimate experience with our finest hookah and exclusive tobacco blends.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Special Blend" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Signature Blend</h3>
+                            <p class="menu-item-price">$30</p>
+                            <p class="menu-item-description">Add our house signature blend to any hookah for an enhanced experience.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Birthday Package" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Birthday Celebration Package</h3>
-                        <p class="menu-item-price">$400</p>
-                        <p class="menu-item-description">Special birthday package including VIP seating, premium bottle, and complimentary dessert.</p>
+                <button class="back-to-top">Back to Categories</button>
+            </div>
+            
+            <div id="specials-header" class="menu-header" style="display: none;">
+                <h2>Special Offers</h2>
+            </div>
+            <div id="specials" class="menu-section">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="VIP Package" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">VIP Lounge Package</h3>
+                            <p class="menu-item-price">$350</p>
+                            <p class="menu-item-description">Exclusive VIP section with premium bottle service, hookah, and appetizer selection.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Ladies Night" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Ladies Night Special</h3>
+                            <p class="menu-item-price">Thursdays</p>
+                            <p class="menu-item-description">Complimentary signature cocktails for ladies from 8pm to 10pm every Thursday.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Birthday Package" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Birthday Celebration Package</h3>
+                            <p class="menu-item-price">$400</p>
+                            <p class="menu-item-description">Special birthday package including VIP seating, premium bottle, and complimentary dessert.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/api/placeholder/300/200" alt="Happy Hour" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Happy Hour</h3>
+                            <p class="menu-item-price">Weekdays 5-7pm</p>
+                            <p class="menu-item-description">Select drinks and appetizers at special prices during our exclusive happy hour.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/300/200" alt="Happy Hour" class="menu-item-image">
-                    <div class="menu-item-info">
-                        <h3 class="menu-item-title">Happy Hour</h3>
-                        <p class="menu-item-price">Weekdays 5-7pm</p>
-                        <p class="menu-item-description">Select drinks and appetizers at special prices during our exclusive happy hour.</p>
-                    </div>
-                </div>
+                <button class="back-to-top">Back to Categories</button>
             </div>
         </div>
     </div>
@@ -188,6 +214,6 @@
         </div>
     </footer>
     
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

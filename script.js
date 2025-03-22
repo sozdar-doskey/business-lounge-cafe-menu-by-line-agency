@@ -1,20 +1,40 @@
-// Menu navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-btn');
+    const categories = document.querySelectorAll('.category');
     const menuSections = document.querySelectorAll('.menu-section');
+    const menuHeaders = document.querySelectorAll('.menu-header');
+    const backButtons = document.querySelectorAll('.back-to-top');
+    const categoriesSection = document.querySelector('.categories');
     
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons and sections
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            menuSections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Show corresponding section
+    // Function to scroll to element
+    function scrollToElement(element) {
+        window.scrollTo({
+            top: element.offsetTop - 20,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Category click handler
+    categories.forEach(category => {
+        category.addEventListener('click', function() {
             const sectionId = this.getAttribute('data-section');
+            
+            // Hide all sections and headers
+            menuSections.forEach(section => section.classList.remove('active'));
+            menuHeaders.forEach(header => header.style.display = 'none');
+            
+            // Show selected section and its header
             document.getElementById(sectionId).classList.add('active');
+            document.getElementById(sectionId + '-header').style.display = 'block';
+            
+            // Scroll to menu section
+            scrollToElement(document.getElementById(sectionId + '-header'));
+        });
+    });
+    
+    // Back to categories button handler
+    backButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            scrollToElement(categoriesSection);
         });
     });
     
