@@ -197,8 +197,8 @@ header::after {
     }
     
     .logo {
-        width: 130px;
-        margin-bottom: 1.8rem;
+        width: 150px; /* Increased from 130px */
+        margin-bottom: 2rem;
     }
     
     header {
@@ -281,7 +281,7 @@ header::after {
     }
     
     .logo {
-        width: 100px;
+        width: 120px; /* Increased from 100px */
         margin-bottom: 1.5rem;
     }
     
@@ -384,7 +384,7 @@ header::after {
     }
     
     .nav-logo-img {
-        height: 35px;
+        height: 40px; /* Increased from 35px */
     }
     
     .nav-toggle span {
@@ -404,7 +404,7 @@ header::after {
     }
     
     .logo {
-        width: 90px;
+        width: 110px; /* Increased from 90px */
     }
     
     .menu-container {
@@ -422,7 +422,7 @@ header::after {
     }
     
     .nav-logo-img {
-        height: 32px;
+        height: 36px; /* Increased from 32px */
     }
     
     .navbar {
