@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close lightbox when clicking the close button or outside the image
         closeButton.addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
@@ -150,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = ''; // Restore scrolling
         }
     }
-    
+
     // Initialize lightbox
     setupLightbox();
 });
