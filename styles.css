@@ -24,7 +24,7 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 70px; /* Adjust based on navbar height */
+    padding-top: 70px; /* Matches navbar height */
 }
 
 /* Elegant Header Styling - Redesigned */
@@ -38,7 +38,7 @@ header {
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid rgba(200, 169, 126, 0.2);
-    margin-top: -70px; /* Adjust based on navbar height */
+    margin-top: 0; /* Reset this, we'll use padding-top on body instead */
 }
 
 header::before {
@@ -710,13 +710,14 @@ footer::before {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(15, 15, 15, 0.95);
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 0.8rem 0;
     border-bottom: 1px solid rgba(200, 169, 126, 0.2);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
+    height: 70px; /* Fixed height to ensure consistency */
 }
 
 .navbar::before {
@@ -736,23 +737,45 @@ footer::before {
     align-items: center;
     justify-content: space-between;
     padding: 0 1.5rem;
+    height: 100%;
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
 }
 
-.nav-logo-img {
-    height: 40px;
-    width: auto;
-    filter: drop-shadow(0 0 8px rgba(200, 169, 126, 0.5));
+.nav-logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(200, 169, 126, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
     transition: all 0.3s ease;
 }
 
+.nav-logo:hover::after {
+    background: radial-gradient(circle at center, rgba(200, 169, 126, 0.2) 0%, transparent 80%);
+}
+
+.nav-logo-img {
+    height: 48px; /* Increased size */
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(200, 169, 126, 0.6));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .nav-logo:hover .nav-logo-img {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8));
 }
 
 .nav-menu {
@@ -824,9 +847,12 @@ footer::before {
 
 /* Add scrolling effect to navbar */
 .navbar.scrolled {
-    padding: 0.6rem 0;
-    background: rgba(10, 10, 10, 0.98);
+    background: rgba(5, 5, 5, 0.98);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.navbar.scrolled .nav-logo-img {
+    height: 44px;
 }
 
 /* Responsive navbar */
@@ -867,11 +893,31 @@ footer::before {
     .nav-toggle.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+
+    .nav-logo-img {
+        height: 42px;
+    }
+    
+    .navbar.scrolled .nav-logo-img {
+        height: 38px;
+    }
 }
 
 @media (max-width: 480px) {
     .nav-menu {
         width: 100%;
+    }
+
+    .nav-logo-img {
+        height: 38px;
+    }
+    
+    .navbar {
+        height: 60px;
+    }
+    
+    body {
+        padding-top: 60px;
     }
 }
 
