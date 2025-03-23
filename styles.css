@@ -85,7 +85,7 @@ header::after {
     padding: 3rem 2rem 2.5rem;
     max-width: 600px;
     width: 100%;
-    animation: fadeIn 1.2s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Remove the background effect */
@@ -98,9 +98,23 @@ header::after {
     width: 220px; /* Increased from 180px */
     height: auto;
     margin-bottom: 2.5rem;
-    filter: drop-shadow(0 0 20px rgba(200, 169, 126, 0.6));
-    animation: pulseGlow 3s infinite;
+    filter: drop-shadow(0 0 30px rgba(200, 169, 126, 0.7)); /* Increased shadow size and opacity */
+    animation: pulseGlow 2s infinite;
     transition: transform 0.5s ease;
+    border-radius: 10px; 
+}
+
+/* Update the pulseGlow animation for a bigger effect */
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 15px rgba(200, 169, 126, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 40px rgba(200, 169, 126, 0.9)); /* Increased maximum glow size */
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgba(200, 169, 126, 0.5));
+    }
 }
 
 .header-text {
