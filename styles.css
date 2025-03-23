@@ -76,36 +76,31 @@ header::after {
     z-index: 1;
 }
 
+/* Remove the surrounding container effect */
 .logo-container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3rem 2rem 2.5rem;
-    border-radius: var(--border-radius);
-    animation: fadeIn 1.2s ease-in-out;
     max-width: 600px;
     width: 100%;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
+/* Remove the background effect */
 .logo-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(200, 169, 126, 0.08) 0%, transparent 70%);
-    z-index: -1;
-    border-radius: var(--border-radius);
+    display: none;
 }
 
+/* Updated logo styling */
 .logo {
-    width: 180px;
+    width: 220px; /* Increased from 180px */
     height: auto;
     margin-bottom: 2.5rem;
     filter: drop-shadow(0 0 20px rgba(200, 169, 126, 0.6));
     animation: pulseGlow 3s infinite;
+    transition: transform 0.5s ease;
 }
 
 .header-text {
@@ -197,7 +192,7 @@ header::after {
     }
     
     .logo {
-        width: 150px; /* Increased from 130px */
+        width: 180px; /* Increased from 150px */
         margin-bottom: 2rem;
     }
     
@@ -260,6 +255,10 @@ header::after {
         max-width: 100%;
         overflow-x: hidden;
     }
+    
+    .nav-logo-img {
+        height: 46px; /* Increased from 42px */
+    }
 }
 
 @media (max-width: 480px) {
@@ -281,7 +280,7 @@ header::after {
     }
     
     .logo {
-        width: 120px; /* Increased from 100px */
+        width: 150px; /* Increased from 120px */
         margin-bottom: 1.5rem;
     }
     
@@ -384,7 +383,7 @@ header::after {
     }
     
     .nav-logo-img {
-        height: 40px; /* Increased from 35px */
+        height: 42px; /* Adjusted for smaller screens */
     }
     
     .nav-toggle span {
@@ -404,7 +403,7 @@ header::after {
     }
     
     .logo {
-        width: 110px; /* Increased from 90px */
+        width: 130px; /* Increased from 110px */
     }
     
     .menu-container {
@@ -422,7 +421,7 @@ header::after {
     }
     
     .nav-logo-img {
-        height: 36px; /* Increased from 32px */
+        height: 40px; /* Adjusted for very small screens */
     }
     
     .navbar {
@@ -1010,25 +1009,14 @@ footer::before {
     z-index: 2;
 }
 
+/* Remove the surrounding effect from the navbar logo */
 .nav-logo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(200, 169, 126, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: -1;
-    transition: all 0.3s ease;
+    display: none;
 }
 
-.nav-logo:hover::after {
-    background: radial-gradient(circle at center, rgba(200, 169, 126, 0.2) 0%, transparent 80%);
-}
-
+/* Also make the navbar logo bigger */
 .nav-logo-img {
-    height: 48px; /* Increased size */
+    height: 52px; /* Increased from 48px */
     width: auto;
     filter: drop-shadow(0 0 10px rgba(200, 169, 126, 0.6));
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
