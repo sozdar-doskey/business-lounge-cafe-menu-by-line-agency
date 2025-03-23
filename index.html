@@ -10,6 +10,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- New Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="nav-logo">
+                <img src="./images/logo.png" alt="Business Lounge Logo" class="nav-logo-img">
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#drinks-section" class="nav-link nav-category" data-category="drinks">Drinks</a></li>
+                <li class="nav-item"><a href="#food-section" class="nav-link nav-category" data-category="food">Food</a></li>
+                <li class="nav-item"><a href="#hookah-section" class="nav-link nav-category" data-category="hookah">Hookah</a></li>
+                <li class="nav-item"><a href="#specials-section" class="nav-link nav-category" data-category="specials">Specials</a></li>
+                <li class="nav-item"><a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank" class="nav-link nav-location">Location</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header>
         <div class="header-content">
             <div class="header-decoration"></div>
@@ -24,13 +46,13 @@
     </header>
     
     <div class="container">
-        <div class="categories">
+        <div id="categories-section" class="categories">
             <div class="category" data-section="drinks">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=320" alt="Drinks">
+                <img src="https://images.pexels.com/photos/2789328/pexels-photo-2789328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Drinks">
                 <div class="category-overlay">Drinks</div>
             </div>
             <div class="category" data-section="food">
-                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=320" alt="Food">
+                <img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Food">
                 <div class="category-overlay">Food</div>
             </div>
             <div class="category" data-section="hookah">

@@ -6,18 +6,113 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoriesSection = document.querySelector('.categories');
     const menuContainer = document.querySelector('.menu-container');
     
+    // Navbar functionality
+    const navbar = document.querySelector('.navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navCategories = document.querySelectorAll('.nav-category');
+    
+    // Toggle mobile menu
+    navToggle.addEventListener('click', function() {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !navToggle.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Nav menu category click handler
+    navCategories.forEach(navLink => {
+        navLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Close mobile menu if open
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            
+            const categoryName = this.getAttribute('data-category');
+            
+            // Find and simulate click on the corresponding category
+            const categoryElement = document.querySelector(`.category[data-section="${categoryName}"]`);
+            if (categoryElement) {
+                categoryElement.click();
+            }
+        });
+    });
+    
+    // Home link click handler
+    const homeLink = document.querySelector('.nav-link:not(.nav-category):not(.nav-location)');
+    if (homeLink) {
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Hide menu container
+            menuContainer.classList.remove('active');
+            
+            // Hide all sections and headers
+            menuSections.forEach(section => section.classList.remove('active'));
+            menuHeaders.forEach(header => header.style.display = 'none');
+            
+            // Restore categories to full size
+            categoriesSection.classList.remove('minimized');
+            
+            // Scroll to top of page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+    
     // Function to scroll to element
     function scrollToElement(element) {
         window.scrollTo({
-            top: element.offsetTop - 20,
+            top: element.offsetTop - 90, // Adjust for navbar height
             behavior: 'smooth'
         });
     }
     
-    // Category click handler
+    // Original category click handler
     categories.forEach(category => {
         category.addEventListener('click', function() {
             const sectionId = this.getAttribute('data-section');
+            
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.nav-category[data-category="${sectionId}"]`).classList.add('active');
             
             // Hide all sections and headers
             menuSections.forEach(section => section.classList.remove('active'));
@@ -38,9 +133,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Back to categories button handler
+    // Back to categories button handler (keep original functionality)
     backButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            homeLink.classList.add('active');
+            
             // Hide the menu container
             menuContainer.classList.remove('active');
             
@@ -152,4 +251,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize lightbox
     setupLightbox();
+    
+    // Add no-scroll class for body
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            .no-scroll {
+                overflow: hidden;
+            }
+        </style>
+    `);
 });
