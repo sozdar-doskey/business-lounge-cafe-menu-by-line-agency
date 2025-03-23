@@ -515,7 +515,7 @@ footer::before {
 }
 
 .footer-info p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: #b0b0b0;
     font-size: 1rem;
     font-weight: 300;
@@ -672,6 +672,34 @@ footer::before {
 .menu-item-image-container:hover::after {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.9;
+}
+
+/* Add this to your existing CSS file */
+.map-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.map-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.map-link:hover {
+    color: var(--accent-color);
+}
+
+.map-link:hover::after {
+    width: 100%;
 }
 
 /* Responsive Design */
