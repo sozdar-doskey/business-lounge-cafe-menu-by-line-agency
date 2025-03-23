@@ -260,4 +260,99 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         </style>
     `);
+
+    // Subcategory navigation
+    function setupSubcategoryNavigation() {
+        const subcategoryBtns = document.querySelectorAll('.subcategory-btn');
+        const subcategoryContents = document.querySelectorAll('.subcategory-content');
+        
+        subcategoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                ripple.classList.add('btn-ripple');
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Update active button
+                subcategoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected subcategory
+                const targetId = this.getAttribute('data-target');
+                subcategoryContents.forEach(content => {
+                    content.classList.remove('active');
+                    
+                    // Add animation classes
+                    content.classList.remove('fadeInAnimation');
+                    content.style.display = 'none';
+                });
+                
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    // Set display to block first, then add animation class
+                    targetContent.style.display = 'block';
+                    
+                    // Force reflow for animation to work
+                    void targetContent.offsetWidth;
+                    
+                    targetContent.classList.add('active', 'fadeInAnimation');
+                }
+                
+                // Scroll to top of subcategory on mobile
+                if (window.innerWidth <= 768) {
+                    const subcategoryTitle = targetContent.querySelector('.subcategory-title');
+                    if (subcategoryTitle) {
+                        subcategoryTitle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            });
+        });
+    }
+
+    // Initialize subcategory navigation after DOM is loaded
+    setupSubcategoryNavigation();
+
+    // Add this style for fade in animation
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            .fadeInAnimation {
+                animation: fadeInSubcategory 0.5s ease forwards;
+            }
+            
+            @keyframes fadeInSubcategory {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .btn-ripple {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: translate(-50%, -50%) scale(2);
+                    opacity: 0;
+                }
+            }
+        </style>
+    `);
 });

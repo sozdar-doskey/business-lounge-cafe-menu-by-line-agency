@@ -70,33 +70,65 @@
                 <h2>Drinks Menu</h2>
             </div>
             <div id="drinks" class="menu-section">
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&q=80&w=400" alt="Signature Cocktail" class="menu-item-image">
-                        <div class="menu-item-info">
-                            <h3 class="menu-item-title">Signature Business Blend</h3>
-                            <p class="menu-item-price">$14</p>
-                            <p class="menu-item-description">Our exclusive coffee blend with premium beans, perfect for closing deals.</p>
+                <div class="subcategories">
+                    <button class="subcategory-btn active" data-target="ice-coffee">☕ Ice Coffee</button>
+                    <button class="subcategory-btn" data-target="hot-coffee">☕ Hot Coffee</button>
+                    <button class="subcategory-btn" data-target="espresso">☕ Espresso Variants</button>
+                    <button class="subcategory-btn" data-target="other-hot">☕ Other Hot Options</button>
+                    <button class="subcategory-btn" data-target="diet-coffee">❄️ Diet Coffee</button>
+                    <button class="subcategory-btn" data-target="diet-ice">❄️ Diet Ice Coffee</button>
+                    <button class="subcategory-btn" data-target="mojito">🍹 Mojito</button>
+                    <button class="subcategory-btn" data-target="mocktails">🍸 Mocktails</button>
+                    <button class="subcategory-btn" data-target="redbull">⚡ Redbull</button>
+                    <button class="subcategory-btn" data-target="milkshake">🍧 Milkshake</button>
+                    <button class="subcategory-btn" data-target="frappe">🍨 Frappe</button>
+                    <button class="subcategory-btn" data-target="ice-tea">🍵 Ice Tea</button>
+                    <button class="subcategory-btn" data-target="hot-tea">🔥 Hot Tea</button>
+                    <button class="subcategory-btn" data-target="smoothie">🍹 Smoothie</button>
+                </div>
+
+                <!-- Ice Coffee Subcategory -->
+                <div id="ice-coffee" class="subcategory-content active">
+                    <h3 class="subcategory-title">☕ Ice Coffee</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=400" alt="Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Latte</h3>
+                                <p class="menu-item-price">4500</p>
+                                <p class="menu-item-description">Our signature iced latte with perfectly balanced espresso and milk.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1502819126416-d387f86d47a1?auto=format&fit=crop&q=80&w=400" alt="Champagne" class="menu-item-image">
-                        <div class="menu-item-info">
-                            <h3 class="menu-item-title">Executive Espresso</h3>
-                            <p class="menu-item-price">$8</p>
-                            <p class="menu-item-description">Premium espresso service with our finest coffee selection.</p>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1581996323777-d05139c75fa7?auto=format&fit=crop&q=80&w=400" alt="Vanilla Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Vanilla Latte</h3>
+                                <p class="menu-item-price">5000</p>
+                                <p class="menu-item-description">Smooth iced latte infused with premium vanilla flavor.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&q=80&w=400" alt="Mocktail" class="menu-item-image">
-                        <div class="menu-item-info">
-                            <h3 class="menu-item-title">Professional Mocktails</h3>
-                            <p class="menu-item-price">$10</p>
-                            <p class="menu-item-description">Refreshing non-alcoholic beverages for productive business meetings.</p>
-                        </div>
+                        <!-- Add more items as needed -->
                     </div>
                 </div>
+
+                <!-- Hot Coffee Subcategory (Initially hidden) -->
+                <div id="hot-coffee" class="subcategory-content">
+                    <h3 class="subcategory-title">☕ Hot Coffee</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?auto=format&fit=crop&q=80&w=400" alt="Americano" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Americano</h3>
+                                <p class="menu-item-price">4500</p>
+                                <p class="menu-item-description">Rich espresso diluted with hot water for a balanced flavor.</p>
+                            </div>
+                        </div>
+                        <!-- Add more items as needed -->
+                    </div>
+                </div>
+
+                <!-- Other subcategories follow the same pattern -->
+                
                 <button class="back-to-top">Back to Categories</button>
             </div>
             
