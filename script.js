@@ -13,6 +13,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const navCategories = document.querySelectorAll('.nav-category');
     
+    // Floating back to top button functionality
+    const floatingBackToTop = document.getElementById('floating-back-to-top');
+    
+    // Show/hide floating back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            floatingBackToTop.classList.add('visible');
+        } else {
+            floatingBackToTop.classList.remove('visible');
+        }
+        
+        // Also handle navbar scroll effect
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Floating back to top button click handler with cubic-bezier easing for smoother animation
+    floatingBackToTop.addEventListener('click', function() {
+        const startPosition = window.pageYOffset;
+        const duration = 1000; // ms - adjust for slower/faster animation
+        let startTime = null;
+        
+        // Cubic-bezier easing function for a more natural deceleration
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+        
+        function animateScroll(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const easeProgress = easeOutCubic(progress);
+            
+            window.scrollTo(0, startPosition * (1 - easeProgress));
+            
+            if (timeElapsed < duration) {
+                window.requestAnimationFrame(animateScroll);
+            }
+        }
+        
+        window.requestAnimationFrame(animateScroll);
+    });
+    
     // Toggle mobile menu
     navToggle.addEventListener('click', function() {
         navToggle.classList.toggle('active');

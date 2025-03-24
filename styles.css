@@ -770,6 +770,68 @@ header::after {
     width: 100%;
 }
 
+/* Floating Back to Top Button */
+#floating-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+    transform: translateY(20px);
+}
+
+#floating-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#floating-back-to-top:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    transform: translateY(-5px);
+}
+
+#floating-back-to-top svg {
+    transition: transform 0.3s ease;
+}
+
+#floating-back-to-top:hover svg {
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments for floating button */
+@media (max-width: 768px) {
+    #floating-back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    #floating-back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
 /* Luxurious Footer */
 footer {
     background-color: var(--secondary-color);
