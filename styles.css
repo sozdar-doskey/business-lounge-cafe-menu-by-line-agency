@@ -16,6 +16,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    /* Only apply box-sizing to mobile devices */
+    @media (min-width: 1200px) {
+        box-sizing: content-box;
+    }
+
     max-width: 100%;
 }
 
@@ -29,18 +35,18 @@ body {
     width: 100%;
 }
 
-/* Elegant Header Styling - Redesigned */
+/* Elegant Header Styling */
 header {
     position: relative;
     height: 60vh;
     min-height: 450px;
     background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid rgba(200, 169, 126, 0.2);
-    margin-top: 0; /* Reset this, we'll use padding-top on body instead */
+    padding: 8rem 0;  /* Added padding for better spacing */
+    margin-bottom: 2rem; /* Added margin to separate from content below */
 }
 
 header::before {
@@ -72,8 +78,21 @@ header::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 2rem;  /* Increased padding */
     z-index: 1;
+    margin: 0 auto; /* Center the content */
+}
+
+/* Add laptop-specific adjustments */
+@media (min-width: 992px) and (max-width: 1200px) {
+    header {
+        height: 65vh;  /* Slightly increased height for laptops */
+    }
+    
+    .header-content {
+        max-width: 900px;
+        padding: 2rem 3rem;
+    }
 }
 
 /* Remove the surrounding container effect */
@@ -116,9 +135,10 @@ header::after {
         filter: drop-shadow(0 0 15px rgba(200, 169, 126, 0.5));
     }
 }
-
 .header-text {
     text-align: center;
+    width: 100%; /* Ensure the text container takes full width */
+    max-width: 100%; /* Prevent overflow */
 }
 
 /* Updated header text styling */
@@ -132,7 +152,9 @@ header::after {
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
     position: relative;
     display: inline-block;
-    white-space: nowrap; /* Ensure text stays on one line */
+    white-space: normal; /* Allow text to wrap if needed */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .header-text h1 strong {
@@ -157,6 +179,8 @@ header::after {
     color: var(--text-light);
     margin-top: 1.5rem;
     opacity: 0.9;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .header-decoration {
@@ -688,7 +712,7 @@ header::after {
     color: var(--text-dark);
     font-weight: 600;
     padding: 0.6rem 1.2rem;
-    border-radius: 30px;
+    border-radius: 11px;
     font-size: 1.1rem;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
@@ -776,17 +800,18 @@ footer::before {
     gap: 2rem;
     margin-bottom: 2.5rem;
 }
-
 .social-icon {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
-    filter: brightness(0) invert(1) sepia(1) saturate(10) hue-rotate(330deg) brightness(0.8);
+    filter: brightness(0.9) sepia(1) hue-rotate(5deg) saturate(1.2);
+    opacity: 0.85;
 }
 
 .social-icon:hover {
     transform: translateY(-8px) rotate(15deg);
-    filter: brightness(0) invert(1) sepia(1) saturate(10) hue-rotate(30deg) brightness(1);
+    filter: brightness(1) sepia(1) hue-rotate(5deg) saturate(1.5);
+    opacity: 1;
 }
 
 .footer-info p {
@@ -949,7 +974,58 @@ footer::before {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.9;
 }
+.phone-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
 
+.phone-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.phone-link:hover {
+    color: var(--accent-color);
+}
+
+.phone-link:hover::after {
+    width: 100%;
+}
+.dev-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.dev-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.dev-link:hover {
+    color: var(--accent-color);
+}
+
+.dev-link:hover::after {
+    width: 100%;
+}
 /* Add this to your existing CSS file */
 .map-link {
     color: var(--primary-color);
@@ -1030,9 +1106,8 @@ footer::before {
 
 /* Also make the navbar logo bigger */
 .nav-logo-img {
-    height: 52px; /* Increased from 48px */
+    height: 82px; /* Increased from 48px */
     width: auto;
-    filter: drop-shadow(0 0 10px rgba(200, 169, 126, 0.6));
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1083,11 +1158,12 @@ footer::before {
 .nav-location {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: 400;
+    text-align: center;
 }
 
 .nav-location::before {
-    content: '📍';
     margin-right: 0.5rem;
     font-size: 1.1rem;
 }
@@ -1172,7 +1248,7 @@ footer::before {
     }
 
     .nav-logo-img {
-        height: 38px;
+        height: 49px;
     }
     
     .navbar {
