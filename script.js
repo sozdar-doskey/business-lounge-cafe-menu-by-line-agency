@@ -112,24 +112,52 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update active nav link
             navLinks.forEach(link => link.classList.remove('active'));
-            document.querySelector(`.nav-category[data-category="${sectionId}"]`).classList.add('active');
+            const navCategory = document.querySelector(`.nav-category[data-category="${sectionId}"]`);
+            if (navCategory) {
+                navCategory.classList.add('active');
+            }
             
             // Hide all sections and headers
             menuSections.forEach(section => section.classList.remove('active'));
             menuHeaders.forEach(header => header.style.display = 'none');
             
-            // Show menu container if it's not already visible
-            menuContainer.classList.add('active');
+            // Special handling for hookah and desserts categories
+            if (sectionId === 'hookah' || sectionId === 'desserts') {
+                // Don't show the menu container above for hookah and desserts
+                menuContainer.classList.remove('active');
+            } else {
+                // Show menu container if it's not already visible (for other categories)
+                menuContainer.classList.add('active');
+            }
             
             // Minimize the categories
             categoriesSection.classList.add('minimized');
             
             // Show selected section and its header
-            document.getElementById(sectionId).classList.add('active');
-            document.getElementById(sectionId + '-header').style.display = 'block';
+            const selectedSection = document.getElementById(sectionId);
+            const selectedHeader = document.getElementById(sectionId + '-header');
             
-            // Scroll to menu section
-            scrollToElement(menuContainer);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            if (selectedHeader) {
+                selectedHeader.style.display = 'block';
+            }
+            
+            // Scroll to appropriate element based on category
+            if (sectionId === 'hookah' || sectionId === 'desserts') {
+                // For hookah and desserts, scroll to the section header
+                const header = document.getElementById(sectionId + '-header');
+                if (header) {
+                    scrollToElement(header);
+                } else {
+                    scrollToElement(categoriesSection);
+                }
+            } else {
+                // For other categories, scroll to menu container
+                scrollToElement(menuContainer);
+            }
         });
     });
     
