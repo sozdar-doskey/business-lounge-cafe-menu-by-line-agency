@@ -143,6 +143,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // About Us link click handler
+    const aboutUsLink = document.querySelector('.nav-link[href="#about-us"]');
+    if (aboutUsLink) {
+        aboutUsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Hide menu container
+            menuContainer.classList.remove('active');
+            
+            // Hide all sections and headers
+            menuSections.forEach(section => section.classList.remove('active'));
+            menuHeaders.forEach(header => header.style.display = 'none');
+            
+            // Restore categories to full size
+            categoriesSection.classList.remove('minimized');
+            
+            // Scroll to About Us section
+            const aboutUsSection = document.getElementById('about-us');
+            if (aboutUsSection) {
+                scrollToElement(aboutUsSection);
+            }
+            
+            // Close mobile menu if open
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+    
     // Function to scroll to element
     function scrollToElement(element) {
         window.scrollTo({
