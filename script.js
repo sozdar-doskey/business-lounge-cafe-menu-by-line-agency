@@ -429,4 +429,196 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         </style>
     `);
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchResultsOverlay = document.getElementById('searchResultsOverlay');
+    const searchResultsContent = document.getElementById('searchResultsContent');
+    const closeSearchResults = document.getElementById('closeSearchResults');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+    
+    // Function to collect menu items data from the DOM
+    function collectMenuItemsData() {
+        const menuItems = document.querySelectorAll('.menu-item');
+        const menuItemsData = [];
+        
+        menuItems.forEach(item => {
+            // Get the menu section this item belongs to
+            const menuSection = item.closest('.menu-section');
+            const categoryId = menuSection ? menuSection.id : '';
+            
+            // Get category name (cleaner format)
+            const categoryName = categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
+            
+            // Get subcategory if available
+            const subcategoryContent = item.closest('.subcategory-content');
+            const subcategoryTitle = subcategoryContent ? 
+                subcategoryContent.querySelector('.subcategory-title').textContent : '';
+            
+            // Get item details
+            const title = item.querySelector('.menu-item-title').textContent;
+            const description = item.querySelector('.menu-item-description') ? 
+                item.querySelector('.menu-item-description').textContent : '';
+            const price = item.querySelector('.menu-item-price').textContent;
+            const imageSrc = item.querySelector('.menu-item-image') ? 
+                item.querySelector('.menu-item-image').src : '';
+            
+            menuItemsData.push({
+                title,
+                description,
+                price,
+                imageSrc,
+                category: categoryName,
+                subcategory: subcategoryTitle,
+                element: item
+            });
+        });
+        
+        return menuItemsData;
+    }
+    
+    // Function to perform search
+    function performSearch(query) {
+        // Normalize search query (lowercase, trim)
+        query = query.toLowerCase().trim();
+        
+        // Don't search for very short queries
+        if (query.length < 2) {
+            return [];
+        }
+        
+        const menuItemsData = collectMenuItemsData();
+        return menuItemsData.filter(item => {
+            return (
+                item.title.toLowerCase().includes(query) ||
+                item.description.toLowerCase().includes(query) ||
+                item.category.toLowerCase().includes(query) ||
+                item.subcategory.toLowerCase().includes(query)
+            );
+        });
+    }
+    
+    // Function to display search results
+    function displaySearchResults(results) {
+        searchResultsContent.innerHTML = '';
+        
+        if (results.length === 0) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+            
+            results.forEach(item => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                
+                resultElement.innerHTML = `
+                    ${item.imageSrc ? `<img src="${item.imageSrc}" alt="${item.title}" class="search-result-image">` : ''}
+                    <div class="search-result-info">
+                        <div class="search-result-title">${item.title}</div>
+                        <div class="search-result-category">${item.category}${item.subcategory ? ' - ' + item.subcategory : ''}</div>
+                        <div class="search-result-price">${item.price}</div>
+                    </div>
+                `;
+                
+                // Add click event to navigate to the item
+                resultElement.addEventListener('click', function() {
+                    // Close the search results
+                    searchResultsOverlay.classList.remove('active');
+                    
+                    // Find the category for this item
+                    const categoryId = item.category.toLowerCase();
+                    const categoryElement = document.querySelector(`.category[data-section="${categoryId}"]`);
+                    
+                    // First click on the category to open the menu section
+                    if (categoryElement) {
+                        categoryElement.click();
+                        
+                        // Wait for animation to complete
+                        setTimeout(() => {
+                            // Scroll to the specific menu item with smooth behavior
+                            item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            
+                            // Highlight the item briefly
+                            item.element.classList.add('highlight-item');
+                            setTimeout(() => {
+                                item.element.classList.remove('highlight-item');
+                            }, 2000);
+                        }, 500);
+                    }
+                });
+                
+                searchResultsContent.appendChild(resultElement);
+            });
+        }
+    }
+    
+    // Search input event handlers
+    searchBtn.addEventListener('click', function() {
+        const query = searchInput.value;
+        const results = performSearch(query);
+        
+        if (query.length >= 2) {
+            displaySearchResults(results);
+            searchResultsOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+    });
+    
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = searchInput.value;
+            const results = performSearch(query);
+            
+            if (query.length >= 2) {
+                displaySearchResults(results);
+                searchResultsOverlay.classList.add('active');
+                document.body.classList.add('no-scroll');
+            }
+        }
+    });
+    
+    // Close search results
+    closeSearchResults.addEventListener('click', function() {
+        searchResultsOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
+    
+    // Close search results when clicking outside
+    searchResultsOverlay.addEventListener('click', function(e) {
+        if (e.target === searchResultsOverlay) {
+            searchResultsOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+    
+    // Close search results with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchResultsOverlay.classList.contains('active')) {
+            searchResultsOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+    
+    // Add styles for highlighted items
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            @keyframes highlightPulse {
+                0%, 100% {
+                    box-shadow: 0 0 0 2px var(--primary-color);
+                    transform: scale(1);
+                }
+                50% {
+                    box-shadow: 0 0 20px 2px var(--primary-color);
+                    transform: scale(1.03);
+                }
+            }
+            
+            .highlight-item {
+                animation: highlightPulse 1.5s ease;
+                position: relative;
+                z-index: 2;
+            }
+        </style>
+    `);
 });
