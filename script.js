@@ -200,14 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
             menuSections.forEach(section => section.classList.remove('active'));
             menuHeaders.forEach(header => header.style.display = 'none');
             
-            // Special handling for hookah and desserts categories
-            if (sectionId === 'hookah' || sectionId === 'desserts') {
-                // Don't show the menu container above for hookah and desserts
-                menuContainer.classList.remove('active');
-            } else {
-                // Show menu container if it's not already visible (for other categories)
-                menuContainer.classList.add('active');
-            }
+            // Show menu container for ALL categories (removing special handling)
+            menuContainer.classList.add('active');
             
             // Minimize the categories
             categoriesSection.classList.add('minimized');
@@ -224,19 +218,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedHeader.style.display = 'block';
             }
             
-            // Scroll to appropriate element based on category
-            if (sectionId === 'hookah' || sectionId === 'desserts') {
-                // For hookah and desserts, scroll to the section header
-                const header = document.getElementById(sectionId + '-header');
-                if (header) {
-                    scrollToElement(header);
+            // NEW CODE: Reset all subcategory displays when changing main categories
+            const subcategoryContents = document.querySelectorAll('.subcategory-content');
+            subcategoryContents.forEach(content => {
+                if (sectionId !== 'drinks') {
+                    // If not in drinks section, hide all subcategory content
+                    content.classList.remove('active');
+                    content.style.display = 'none';
                 } else {
-                    scrollToElement(categoriesSection);
+                    // In drinks section, only show the active subcategory
+                    if (!content.classList.contains('active')) {
+                        content.style.display = 'none';
+                    }
                 }
-            } else {
-                // For other categories, scroll to menu container
-                scrollToElement(menuContainer);
-            }
+            });
+            
+            // Scroll to menu container for all categories
+            scrollToElement(menuContainer);
         });
     });
     
@@ -554,31 +552,98 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
                 
-                // Add click event to navigate to the item
+                // Improved click event handling for search results
                 resultElement.addEventListener('click', function() {
-                    // Close the search results
+                    // First close the search overlay and restore body scrolling
                     searchResultsOverlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    document.body.style.overflow = '';
                     
-                    // Find the category for this item
-                    const categoryId = item.category.toLowerCase();
-                    const categoryElement = document.querySelector(`.category[data-section="${categoryId}"]`);
-                    
-                    // First click on the category to open the menu section
-                    if (categoryElement) {
-                        categoryElement.click();
+                    // Small delay to ensure overlay is closed before navigating
+                    setTimeout(() => {
+                        // Find the category for this item
+                        const categoryId = item.category.toLowerCase();
+                        const categoryElement = document.querySelector(`.category[data-section="${categoryId}"]`);
                         
-                        // Wait for animation to complete
-                        setTimeout(() => {
-                            // Scroll to the specific menu item with smooth behavior
-                            item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        if (categoryElement) {
+                            // First show the appropriate category
+                            const sectionId = categoryElement.getAttribute('data-section');
                             
-                            // Highlight the item briefly
-                            item.element.classList.add('highlight-item');
+                            // Reset all sections first
+                            menuSections.forEach(section => section.classList.remove('active'));
+                            menuHeaders.forEach(header => header.style.display = 'none');
+                            
+                            // Update active nav link
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            const navCategory = document.querySelector(`.nav-category[data-category="${sectionId}"]`);
+                            if (navCategory) {
+                                navCategory.classList.add('active');
+                            }
+                            
+                            // Show menu container
+                            menuContainer.classList.add('active');
+                            
+                            // Minimize categories
+                            categoriesSection.classList.add('minimized');
+                            
+                            // Show selected section and header
+                            const selectedSection = document.getElementById(sectionId);
+                            const selectedHeader = document.getElementById(sectionId + '-header');
+                            
+                            if (selectedSection) {
+                                selectedSection.classList.add('active');
+                            }
+                            
+                            if (selectedHeader) {
+                                selectedHeader.style.display = 'block';
+                            }
+                            
+                            // For drinks category, ensure correct subcategory is active
+                            if (sectionId === 'drinks' && item.subcategory) {
+                                // Find the appropriate subcategory based on the item
+                                const subcategoryContents = document.querySelectorAll('.subcategory-content');
+                                
+                                // Hide all subcategories first
+                                subcategoryContents.forEach(content => {
+                                    content.classList.remove('active');
+                                    content.style.display = 'none';
+                                });
+                                
+                                // Find and activate the correct subcategory if possible
+                                const subcategoryContent = item.element.closest('.subcategory-content');
+                                if (subcategoryContent) {
+                                    const subcategoryId = subcategoryContent.id;
+                                    const targetContent = document.getElementById(subcategoryId);
+                                    const subcategoryBtn = document.querySelector(`.subcategory-btn[data-target="${subcategoryId}"]`);
+                                    
+                                    if (targetContent) {
+                                        // Update UI for subcategory buttons
+                                        const subcategoryBtns = document.querySelectorAll('.subcategory-btn');
+                                        subcategoryBtns.forEach(btn => btn.classList.remove('active'));
+                                        if (subcategoryBtn) {
+                                            subcategoryBtn.classList.add('active');
+                                        }
+                                        
+                                        // Display the correct subcategory
+                                        targetContent.style.display = 'block';
+                                        targetContent.classList.add('active', 'fadeInAnimation');
+                                    }
+                                }
+                            }
+                            
+                            // Short delay to ensure sections are displayed before scrolling
                             setTimeout(() => {
-                                item.element.classList.remove('highlight-item');
-                            }, 2000);
-                        }, 500);
-                    }
+                                // Scroll to the item with smooth behavior
+                                item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                
+                                // Highlight the item
+                                item.element.classList.add('highlight-item');
+                                setTimeout(() => {
+                                    item.element.classList.remove('highlight-item');
+                                }, 2000);
+                            }, 300);
+                        }
+                    }, 100);
                 });
                 
                 searchResultsContent.appendChild(resultElement);
@@ -654,156 +719,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         </style>
     `);
-
-    // Gallery functionality
-    const gallerySection = document.getElementById('gallery');
-    const galleryLink = document.getElementById('galleryLink');
-    
-    // Create gallery lightbox elements
-    function setupGalleryLightbox() {
-        // Create lightbox elements
-        const galleryLightbox = document.createElement('div');
-        galleryLightbox.className = 'gallery-lightbox';
-        
-        const lightboxContent = document.createElement('div');
-        lightboxContent.className = 'gallery-lightbox-content';
-        
-        const lightboxImage = document.createElement('img');
-        lightboxImage.className = 'gallery-lightbox-image';
-        
-        const closeButton = document.createElement('button');
-        closeButton.className = 'gallery-lightbox-close';
-        closeButton.innerHTML = '×';
-        
-        const prevButton = document.createElement('button');
-        prevButton.className = 'gallery-lightbox-prev';
-        prevButton.innerHTML = '❮';
-        
-        const nextButton = document.createElement('button');
-        nextButton.className = 'gallery-lightbox-next';
-        nextButton.innerHTML = '❯';
-        
-        lightboxContent.appendChild(lightboxImage);
-        galleryLightbox.appendChild(lightboxContent);
-        galleryLightbox.appendChild(closeButton);
-        galleryLightbox.appendChild(prevButton);
-        galleryLightbox.appendChild(nextButton);
-        document.body.appendChild(galleryLightbox);
-        
-        // Gallery image click handlers
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        let currentIndex = 0;
-        
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', function() {
-                currentIndex = index;
-                const imgSrc = item.querySelector('.gallery-image').src;
-                openLightbox(imgSrc);
-            });
-        });
-        
-        function openLightbox(src) {
-            lightboxImage.src = src;
-            galleryLightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-        
-        function closeLightbox() {
-            galleryLightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-        
-        function showPrevImage() {
-            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-            const imgSrc = galleryItems[currentIndex].querySelector('.gallery-image').src;
-            lightboxImage.src = imgSrc;
-        }
-        
-        function showNextImage() {
-            currentIndex = (currentIndex + 1) % galleryItems.length;
-            const imgSrc = galleryItems[currentIndex].querySelector('.gallery-image').src;
-            lightboxImage.src = imgSrc;
-        }
-        
-        // Event listeners for lightbox
-        closeButton.addEventListener('click', closeLightbox);
-        prevButton.addEventListener('click', showPrevImage);
-        nextButton.addEventListener('click', showNextImage);
-        
-        galleryLightbox.addEventListener('click', function(e) {
-            if (e.target === galleryLightbox) {
-                closeLightbox();
-            }
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (!galleryLightbox.classList.contains('active')) return;
-            
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                showPrevImage();
-            } else if (e.key === 'ArrowRight') {
-                showNextImage();
-            }
-        });
-    }
-    
-    // Gallery link click handler
-    if (galleryLink) {
-        galleryLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Update active nav link
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Hide all other content sections
-            menuContainer.classList.remove('active');
-            menuSections.forEach(section => section.classList.remove('active'));
-            menuHeaders.forEach(header => header.style.display = 'none');
-            
-            // Hide the about us section if it's visible
-            const aboutSection = document.getElementById('about-us');
-            if (aboutSection) {
-                aboutSection.style.display = 'none';
-            }
-            
-            // Show gallery section
-            if (gallerySection) {
-                gallerySection.style.display = 'block';
-                scrollToElement(gallerySection);
-            }
-            
-            // Restore categories to full size
-            categoriesSection.classList.remove('minimized');
-            
-            // Close mobile menu if open
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    }
-    
-    // Initialize gallery lightbox
-    setupGalleryLightbox();
-    
-    // Additional event for other section links to hide gallery
-    const nonGalleryLinks = document.querySelectorAll('.nav-link:not(#galleryLink)');
-    nonGalleryLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (gallerySection) {
-                gallerySection.style.display = 'none';
-            }
-            
-            // Show the about us section again if needed
-            if (link.getAttribute('href') === '#about-us') {
-                const aboutSection = document.getElementById('about-us');
-                if (aboutSection) {
-                    aboutSection.style.display = 'block';
-                }
-            }
-        });
-    });
 });
