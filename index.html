@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Lounge Cafe</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- New Navigation Bar -->
+    <!-- =============================================
+    NAVIGATION BAR
+    ============================================== -->
     <nav class="navbar">
         <div class="navbar-content">
+            <!-- Logo -->
             <div class="nav-logo">
                 <img src="./images/logo.png" alt="Business Lounge Logo" class="nav-logo-img" loading="lazy">
             </div>
             
-            <!-- Add search box component -->
+            <!-- Search Functionality -->
             <div class="search-container">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Search">
@@ -32,11 +37,14 @@
                 <div class="search-results" id="searchResults"></div>
             </div>
             
+            <!-- Mobile Menu Toggle Button -->
             <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            
+            <!-- Navigation Menu -->
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="#drinks-header" class="nav-link nav-category" data-category="drinks">Drinks</a></li>
@@ -50,6 +58,9 @@
         </div>
     </nav>
 
+    <!-- =============================================
+    HEADER SECTION
+    ============================================== -->
     <header>
         <div class="header-content">
             <div class="header-decoration"></div>
@@ -63,17 +74,20 @@
         </div>
     </header>
 
-    <!-- Gallery Section -->
+    <!-- =============================================
+    GALLERY SECTION
+    ============================================== -->
     <section id="gallery" class="gallery-section">
         <div class="container">
             <div class="gallery-container">
+                <!-- Gallery Header -->
                 <div class="gallery-header">
                     <h2>Our Gallery</h2>
                     <p class="gallery-tagline">Experience the atmosphere of Business Lounge Cafe</p>
                 </div>
                 
+                <!-- Gallery Image Grid -->
                 <div class="gallery-grid">
-                    <!-- Replace these with your actual gallery images -->
                     <div class="gallery-item">
                         <img src="./images/gallery/cafe1.jpg" alt="Cafe Interior" class="gallery-image" loading="lazy">
                     </div>
@@ -103,9 +117,11 @@
         </div>
     </section>
 
-    <!--jnfdosanhioshafiopsahjfiophsifhasfhhfisiafioaf-->
-  
+    <!-- =============================================
+    MENU CATEGORIES SECTION
+    ============================================== -->
     <div class="container">
+        <!-- Category Images for Quick Navigation -->
         <div id="categories-section" class="categories">
             <div class="category" data-section="drinks">
                 <img src="https://img.freepik.com/free-photo/refreshing-cocktail-wooden-bar-city-nightlife-celebration-generated-by-artificial-intelligence_25030-63440.jpg?t=st=1742836430~exp=1742840030~hmac=0d4a878352559a3aeb6c205c00be5b44120ed3b530847f59bd34846321491e1a&w=1060" alt="Drinks" loading="lazy">
@@ -115,22 +131,25 @@
                 <img src="https://img.freepik.com/free-photo/pumpkin-cheesecake-slice-delicious-desserts_1268-27893.jpg?uid=R184006353&ga=GA1.1.942841538.1696692884&semt=ais_hybrid" alt="Desserts" loading="lazy">    
                 <div class="category-overlay">Desserts</div>
             </div>
-          
             <div class="category" data-section="hookah">
                 <img src="./images/hookah.jpg" alt="Hookah" loading="lazy">    
                 <div class="category-overlay">Hookah</div>
             </div>
-            
-           
         </div>
         
+        <!-- =============================================
+        MENU CONTAINER - HOLDS ALL MENU SECTIONS
+        ============================================== -->
         <div class="menu-container">
+            <!-- =============================================
+            DRINKS MENU SECTION
+            ============================================== -->
             <div id="drinks-header" class="menu-header">
                 <h2>Drinks Menu</h2>
             </div>
             <div id="drinks" class="menu-section">
+                <!-- Subcategory Navigation for Drinks -->
                 <div class="subcategories">
-                    
                     <button class="subcategory-btn active" data-target="ice-coffee">❄️ Ice Coffee</button>
                     <button class="subcategory-btn" data-target="hot-coffee">☕ Hot Coffee</button>
                     <button class="subcategory-btn" data-target="espresso">☕ Espresso Variants</button>
@@ -146,10 +165,11 @@
                     <button class="subcategory-btn" data-target="smoothie">🍹 Smoothie</button>
                 </div>
 
-                <!-- Ice Coffee Subcategory -->
+                <!-- Ice Coffee Subcategory Content -->
                 <div id="ice-coffee" class="subcategory-content active">
                     <h3 class="subcategory-title">☕ Ice Coffee</h3>
                     <div class="menu-items">
+                        <!-- Ice Coffee Menu Items -->
                         <div class="menu-item">
                             <img src="https://img.freepik.com/free-photo/latte-coffee_1122-2728.jpg?uid=R184006353&ga=GA1.1.942841538.1696692884&semt=ais_hybrid" alt="Latte" class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
@@ -227,10 +247,11 @@
                 </div>
             </div>
 
-                <!-- Hot Coffee Subcategory  -->
+                <!-- Hot Coffee Subcategory Content -->
                 <div id="hot-coffee" class="subcategory-content">
                     <h3 class="subcategory-title">☕ Hot Coffee</h3>
                     <div class="menu-items">
+                        <!-- Hot Coffee Menu Items -->
                         <div class="menu-item">
                             <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?auto=format&fit=crop&q=80&w=400" alt="Americano" class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
@@ -371,549 +392,553 @@
                     </div>
                 </div>
 
-                    <!-- Espresso Variants Subcategory -->
-                    <div id="espresso" class="subcategory-content">
-                        <h3 class="subcategory-title">☕ Espresso Variants</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Espresso" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Espresso</h3>
-                                    <p class="menu-item-price">3000 IQD</p>
-                                    <p class="menu-item-description">A concentrated shot of rich, pure coffee flavor.</p>
-                                </div>
+                <!-- Espresso Variants Subcategory Content -->
+                <div id="espresso" class="subcategory-content">
+                    <h3 class="subcategory-title">☕ Espresso Variants</h3>
+                    <div class="menu-items">
+                        <!-- Espresso Menu Items -->
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Espresso" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Espresso</h3>
+                                <p class="menu-item-price">3000 IQD</p>
+                                <p class="menu-item-description">A concentrated shot of rich, pure coffee flavor.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Espresso Double" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Espresso Double</h3>
-                                    <p class="menu-item-price">4000 IQD</p>
-                                    <p class="menu-item-description">Two shots of our premium espresso for an extra kick.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Espresso Double" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Espresso Double</h3>
+                                <p class="menu-item-price">4000 IQD</p>
+                                <p class="menu-item-description">Two shots of our premium espresso for an extra kick.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Espresso Con Panna" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Espresso Con Panna</h3>
-                                    <p class="menu-item-price">3500 IQD</p>
-                                    <p class="menu-item-description">Espresso topped with a dollop of whipped cream.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Espresso Con Panna" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Espresso Con Panna</h3>
+                                <p class="menu-item-price">3500 IQD</p>
+                                <p class="menu-item-description">Espresso topped with a dollop of whipped cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Espresso Affogato" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Espresso Affogato</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Hot espresso poured over a scoop of vanilla ice cream.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Espresso Affogato" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Espresso Affogato</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Hot espresso poured over a scoop of vanilla ice cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Espresso Macchiato" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Espresso Macchiato</h3>
-                                    <p class="menu-item-price">3500 IQD</p>
-                                    <p class="menu-item-description">Espresso "stained" with a small amount of foamed milk.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Espresso Macchiato" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Espresso Macchiato</h3>
+                                <p class="menu-item-price">3500 IQD</p>
+                                <p class="menu-item-description">Espresso "stained" with a small amount of foamed milk.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-
-
-                    <!-- Diet Coffee Subcategory -->
-                    <div id="diet-coffee" class="subcategory-content">
-                        <h3 class="subcategory-title">❄️ Diet Coffee</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Caramel Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Caramel Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Light, low-calorie caramel latte made with sugar-free syrup.</p>
-                                </div>
+                <!-- Diet Coffee Subcategory Content -->
+                <div id="diet-coffee" class="subcategory-content">
+                    <h3 class="subcategory-title">❄️ Diet Coffee</h3>
+                    <div class="menu-items">
+                        <!-- Diet Coffee Menu Items -->
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Caramel Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Caramel Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Light, low-calorie caramel latte made with sugar-free syrup.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Vanilla Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Creamy vanilla latte made with sugar-free vanilla syrup.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Vanilla Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Creamy vanilla latte made with sugar-free vanilla syrup.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Dairy-free latte made with almond milk and a touch of natural honey.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Dairy-free latte made with almond milk and a touch of natural honey.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Oat Milk Latte</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Rich and creamy latte made with plant-based oat milk.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Oat Milk Latte</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Rich and creamy latte made with plant-based oat milk.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Diet Ice Coffee Subcategory -->
-                    <div id="diet-ice" class="subcategory-content">
-                        <h3 class="subcategory-title">❄️ Diet Ice Coffee</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Caramel Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Caramel Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Refreshing iced caramel latte made with sugar-free syrup.</p>
-                                </div>
+                <!-- Diet Ice Coffee Subcategory Content -->
+                <div id="diet-ice" class="subcategory-content">
+                    <h3 class="subcategory-title">❄️ Diet Ice Coffee</h3>
+                    <div class="menu-items">
+                        <!-- Diet Ice Coffee Menu Items -->
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Caramel Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Caramel Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Refreshing iced caramel latte made with sugar-free syrup.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Vanilla Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Cool and creamy iced vanilla latte made with sugar-free vanilla syrup.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Vanilla Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Cool and creamy iced vanilla latte made with sugar-free vanilla syrup.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Dairy-free iced latte made with almond milk and a touch of natural honey.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Dairy-free iced latte made with almond milk and a touch of natural honey.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Oat Milk Latte</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Chilled latte made with plant-based oat milk, perfect for a guilt-free refreshment.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Oat Milk Latte</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Chilled latte made with plant-based oat milk, perfect for a guilt-free refreshment.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-
-                    <!-- Mojito Subcategory -->
-                    <div id="mojito" class="subcategory-content">
-                        <h3 class="subcategory-title">🍹 Mojito</h3>
-                        <div class="menu-items">    
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Classic Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Classic Mojito</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Refreshing mint mojito with lime and soda water.</p>
-                                </div>
+                <!-- Mojito Subcategory Content -->
+                <div id="mojito" class="subcategory-content">
+                    <h3 class="subcategory-title">🍹 Mojito</h3>
+                    <div class="menu-items">    
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Classic Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Classic Mojito</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Refreshing mint mojito with lime and soda water.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry Mojito</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Classic mojito infused with sweet strawberry flavor.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry Mojito</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Classic mojito infused with sweet strawberry flavor.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Cherry Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Cherry Mojito</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Refreshing mojito with a sweet cherry twist.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Cherry Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Cherry Mojito</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Refreshing mojito with a sweet cherry twist.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Blueberry Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Blueberry Mojito</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Mojito mixed with fresh blueberries for a fruity flavor.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Blueberry Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Blueberry Mojito</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Mojito mixed with fresh blueberries for a fruity flavor.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Mango Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Mango Mojito</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Tropical mango flavor combined with classic mojito.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Mango Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Mango Mojito</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Tropical mango flavor combined with classic mojito.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Business Mojito" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Business Mojito</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Our signature house mojito with a special blend of flavors.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Business Mojito" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Business Mojito</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Our signature house mojito with a special blend of flavors.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Mocktails Subcategory -->
-                    <div id="mocktails" class="subcategory-content">
-                        <h3 class="subcategory-title">🍸 Mocktails</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Bloody Mery" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Bloody Mery</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Spicy tomato-based mocktail with a blend of savory spices.</p>
-                                </div>
+                <!-- Mocktails Subcategory Content -->
+                <div id="mocktails" class="subcategory-content">
+                    <h3 class="subcategory-title">🍸 Mocktails</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Bloody Mery" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Bloody Mery</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Spicy tomato-based mocktail with a blend of savory spices.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Pina Colada" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Pina Colada</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Tropical blend of coconut cream and pineapple juice.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Pina Colada" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Pina Colada</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Tropical blend of coconut cream and pineapple juice.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Lemonade" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry Lemonade</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Sweet and tangy lemonade mixed with fresh strawberries.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Lemonade" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry Lemonade</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Sweet and tangy lemonade mixed with fresh strawberries.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Paradise" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Paradise</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Refreshing blend of tropical fruits and citrus juices.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Paradise" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Paradise</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Refreshing blend of tropical fruits and citrus juices.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Business</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Our signature mocktail with a secret recipe.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Business</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Our signature mocktail with a secret recipe.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Redbull Subcategory -->
-                    <div id="redbull" class="subcategory-content">
-                        <h3 class="subcategory-title">⚡ Redbull</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Fizzler" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry Fizzler</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Redbull mixed with strawberry syrup and a splash of soda.</p>
-                                </div>
+                <!-- Redbull Subcategory Content -->
+                <div id="redbull" class="subcategory-content">
+                    <h3 class="subcategory-title">⚡ Redbull</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Fizzler" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry Fizzler</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Redbull mixed with strawberry syrup and a splash of soda.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Bluetiki Fizzler" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Bluetiki Fizzler</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Redbull infused with blue curacao syrup for a tropical twist.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Bluetiki Fizzler" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Bluetiki Fizzler</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Redbull infused with blue curacao syrup for a tropical twist.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Yuztiki" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Yuztiki</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Redbull with yuzu citrus flavor for a refreshing kick.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Yuztiki" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Yuztiki</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Redbull with yuzu citrus flavor for a refreshing kick.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Pomegranate" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Pomegranate</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Redbull mixed with pomegranate syrup for a sweet and tangy flavor.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Pomegranate" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Pomegranate</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Redbull mixed with pomegranate syrup for a sweet and tangy flavor.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Business</h3>
-                                    <p class="menu-item-price">5500 IQD</p>
-                                    <p class="menu-item-description">Our signature Redbull mix with a special blend of flavors.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Business</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Our signature Redbull mix with a special blend of flavors.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Milkshake Subcategory -->
-                    <div id="milkshake" class="subcategory-content">
-                        <h3 class="subcategory-title">🍧 Milkshake</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Chocolate" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Chocolate</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Rich and creamy chocolate milkshake topped with whipped cream.</p>
-                                </div>
+                <!-- Milkshake Subcategory Content -->
+                <div id="milkshake" class="subcategory-content">
+                    <h3 class="subcategory-title">🍧 Milkshake</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Chocolate" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Chocolate</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Rich and creamy chocolate milkshake topped with whipped cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Oreo" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Oreo</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Creamy milkshake blended with Oreo cookies.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Oreo" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Oreo</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Creamy milkshake blended with Oreo cookies.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Kinder" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Kinder</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Milkshake made with Kinder chocolate for a unique flavor.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Kinder" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Kinder</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Milkshake made with Kinder chocolate for a unique flavor.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Caramel" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Caramel</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Sweet milkshake with rich caramel syrup and whipped cream.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Caramel" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Caramel</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Sweet milkshake with rich caramel syrup and whipped cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Classic strawberry milkshake made with fresh strawberries.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Classic strawberry milkshake made with fresh strawberries.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Frappe Subcategory -->
-                    <div id="frappe" class="subcategory-content">
-                        <h3 class="subcategory-title">🍨 Frappe</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Mocha Coco Frappe" class="menu-item-image" loading="lazy">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Mocha Coco Frappe</h3>
-                                    <p class="menu-item-price">6500 IQD</p>
-                                    <p class="menu-item-description">Blended mocha frappe with coconut flavor and whipped cream.</p>
-                                </div>
+                <!-- Frappe Subcategory Content -->
+                <div id="frappe" class="subcategory-content">
+                    <h3 class="subcategory-title">🍨 Frappe</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Mocha Coco Frappe" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Mocha Coco Frappe</h3>
+                                <p class="menu-item-price">6500 IQD</p>
+                                <p class="menu-item-description">Blended mocha frappe with coconut flavor and whipped cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Mocha Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Mocha Frappe</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Chocolate and coffee blended with ice and topped with cream.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Mocha Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Mocha Frappe</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Chocolate and coffee blended with ice and topped with cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Caramel Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Caramel Frappe</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Blended coffee with caramel syrup, topped with whipped cream.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Caramel Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Caramel Frappe</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Blended coffee with caramel syrup, topped with whipped cream.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Vanilla Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Vanilla Frappe</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Creamy vanilla blended with coffee and ice for a refreshing treat.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Vanilla Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Vanilla Frappe</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Creamy vanilla blended with coffee and ice for a refreshing treat.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Cream Caramel Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Cream Caramel Frappe</h3>
-                                    <p class="menu-item-price">7000 IQD</p>
-                                    <p class="menu-item-description">Premium frappe with extra caramel and cream topping.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Cream Caramel Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Cream Caramel Frappe</h3>
+                                <p class="menu-item-price">7000 IQD</p>
+                                <p class="menu-item-description">Premium frappe with extra caramel and cream topping.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry Frappe</h3>
-                                    <p class="menu-item-price">7000 IQD</p>
-                                    <p class="menu-item-description">Sweet strawberry blended frappe, perfect for fruit lovers.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry Frappe</h3>
+                                <p class="menu-item-price">7000 IQD</p>
+                                <p class="menu-item-description">Sweet strawberry blended frappe, perfect for fruit lovers.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Business Frappe" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Business Frappe</h3>
-                                    <p class="menu-item-price">7000 IQD</p>
-                                    <p class="menu-item-description">Our signature frappe with a special blend of flavors.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Business Frappe" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Business Frappe</h3>
+                                <p class="menu-item-price">7000 IQD</p>
+                                <p class="menu-item-description">Our signature frappe with a special blend of flavors.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Ice Tea Subcategory -->
-                    <div id="ice-tea" class="subcategory-content">
-                        <h3 class="subcategory-title">🍵 Ice Tea</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Lemon Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Lemon Tea</h3>
-                                    <p class="menu-item-price">4000 IQD</p>
-                                    <p class="menu-item-description">Refreshing iced tea with a splash of fresh lemon juice.</p>
-                                </div>
+                <!-- Ice Tea Subcategory Content -->
+                <div id="ice-tea" class="subcategory-content">
+                    <h3 class="subcategory-title">🍵 Ice Tea</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Lemon Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Lemon Tea</h3>
+                                <p class="menu-item-price">4000 IQD</p>
+                                <p class="menu-item-description">Refreshing iced tea with a splash of fresh lemon juice.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry Tea</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Sweet strawberry-infused iced tea.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry Tea</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Sweet strawberry-infused iced tea.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Passion Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Passion Tea</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Exotic passion fruit iced tea blend.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Passion Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Passion Tea</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Exotic passion fruit iced tea blend.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Chai Tea Latte" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Chai Tea Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Spiced chai tea with milk served over ice.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Chai Tea Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Chai Tea Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Spiced chai tea with milk served over ice.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Matcha Tea Latte" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Matcha Tea Latte</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Iced Japanese green tea blend with milk.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Matcha Tea Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Matcha Tea Latte</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Iced Japanese green tea blend with milk.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Peach Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Peach Tea</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Sweet peach-infused iced tea.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Peach Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Peach Tea</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Sweet peach-infused iced tea.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Hot Tea Subcategory -->
-                    <div id="hot-tea" class="subcategory-content">
-                        <h3 class="subcategory-title">🔥 Hot Tea</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Lemon Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Lemon Tea</h3>
-                                    <p class="menu-item-price">4000 IQD</p>
-                                    <p class="menu-item-description">Traditional hot tea served with fresh lemon.</p>
-                                </div>
+                <!-- Hot Tea Subcategory Content -->
+                <div id="hot-tea" class="subcategory-content">
+                    <h3 class="subcategory-title">🔥 Hot Tea</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Lemon Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Lemon Tea</h3>
+                                <p class="menu-item-price">4000 IQD</p>
+                                <p class="menu-item-description">Traditional hot tea served with fresh lemon.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Green Tea" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Green Tea</h3>
-                                    <p class="menu-item-price">4000 IQD</p>
-                                    <p class="menu-item-description">Premium green tea with antioxidant benefits.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Green Tea" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Green Tea</h3>
+                                <p class="menu-item-price">4000 IQD</p>
+                                <p class="menu-item-description">Premium green tea with antioxidant benefits.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Chai Tea Latte" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Chai Tea Latte</h3>
-                                    <p class="menu-item-price">4500 IQD</p>
-                                    <p class="menu-item-description">Spiced chai tea blended with steamed milk.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Chai Tea Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Chai Tea Latte</h3>
+                                <p class="menu-item-price">4500 IQD</p>
+                                <p class="menu-item-description">Spiced chai tea blended with steamed milk.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Matcha Tea Latte" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Matcha Tea Latte</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Japanese green tea powder whisked with steamed milk.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Matcha Tea Latte" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Matcha Tea Latte</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Japanese green tea powder whisked with steamed milk.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Smoothie Subcategory -->
-                    <div id="smoothie" class="subcategory-content">
-                        <h3 class="subcategory-title">🍹 Smoothie</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Mango Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Mango</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Tropical mango blended with ice for a refreshing treat.</p>
-                                </div>
+                <!-- Smoothie Subcategory Content -->
+                <div id="smoothie" class="subcategory-content">
+                    <h3 class="subcategory-title">🍹 Smoothie</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Mango Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Mango</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Tropical mango blended with ice for a refreshing treat.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Strawberry Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Strawberry</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Sweet strawberry smoothie made with fresh berries.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Strawberry Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Strawberry</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Sweet strawberry smoothie made with fresh berries.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Pineapple Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Pineapple</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Tropical pineapple blended to perfection.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Pineapple Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Pineapple</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Tropical pineapple blended to perfection.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Peach Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Peach</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Sweet peach smoothie, perfect for a summer day.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Peach Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Peach</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Sweet peach smoothie, perfect for a summer day.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Blueberry Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Blueberry</h3>
-                                    <p class="menu-item-price">5000 IQD</p>
-                                    <p class="menu-item-description">Antioxidant-rich blueberry smoothie.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Blueberry Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Blueberry</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Antioxidant-rich blueberry smoothie.</p>
                             </div>
-                            <div class="menu-item">
-                                <img src="https://placehold.co/400x300" alt="Business Smoothie" class="menu-item-image">
-                                <div class="menu-item-info">
-                                    <h3 class="menu-item-title">Business</h3>
-                                    <p class="menu-item-price">6000 IQD</p>
-                                    <p class="menu-item-description">Our signature smoothie with a blend of premium fruits.</p>
-                                </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Business Smoothie" class="menu-item-image">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Business</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">Our signature smoothie with a blend of premium fruits.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Back to Categories Button for Drinks Section -->
                 <button class="back-to-top">Back to Categories</button>
-            </div>
             
+            <!-- =============================================
+            DESSERTS MENU SECTION
+            ============================================== -->
             <div id="desserts-header" class="menu-header" style="display: none;">
                 <h2>Desserts Menu</h2>
             </div>
             <div id="desserts" class="menu-section">
                 <div class="menu-items">
+                    <!-- Dessert Menu Items -->
                     <div class="menu-item">
                         <img src="https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Chocolate Fondant" class="menu-item-image">
                         <div class="menu-item-info">
@@ -963,15 +988,19 @@
                         </div>
                     </div>
                 </div>
+                <!-- Back to Categories Button for Desserts Section -->
                 <button class="back-to-top">Back to Categories</button>
             </div>
             
+            <!-- =============================================
+            HOOKAH MENU SECTION
+            ============================================== -->
             <div id="hookah-header" class="menu-header" style="display: none;">
                 <h2>Hookah Menu</h2>
             </div>
             <div id="hookah" class="menu-section">
                 <div class="menu-items">
-  
+                    <!-- Hookah Menu Items -->
                     <div class="menu-item">
                         <img src="https://images.pexels.com/photos/4563735/pexels-photo-4563735.jpeg" alt="VIP Hookah" class="menu-item-image">
                         <div class="menu-item-info">
@@ -989,28 +1018,31 @@
                         </div>
                     </div>
                 </div>
+                <!-- Back to Categories Button for Hookah Section -->
                 <button class="back-to-top">Back to Categories</button>
             </div>
-            
-           
         </div>
     </div>
 
-
-     <!-- About Us Section -->
-     <section id="about-us" class="about-section">
+    <!-- =============================================
+    ABOUT US SECTION
+    ============================================== -->
+    <section id="about-us" class="about-section">
         <div class="container">
             <div class="about-container">
+                <!-- About Header -->
                 <div class="about-header">
                     <h2>About Us</h2>
                     <p class="about-tagline">Business Lounge Cafe – More than coffee, it's where business happens.</p>
                 </div>
+                <!-- About Content -->
                 <div class="about-content">
                     <div class="about-text">
                         <p>Welcome to Business Lounge Cafe, where productivity meets comfort. We're not just a coffee shop — we're a space designed for thinkers, doers, and dreamers. Whether you're closing a deal, working on your next big idea, or simply enjoying a late-night coffee, this is the place to be.</p>
                         
                         <p>Open daily from 7:30 PM to 2:00 AM, we cater to night owls, professionals, and anyone who values quality coffee in a calm, stylish atmosphere. Enjoy fast Wi-Fi, a sleek interior, and a menu crafted to fuel both focus and flavor.</p>
                         
+                        <!-- Contact Information -->
                         <div class="about-info">
                             <div class="info-item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1047,12 +1079,16 @@
         </div>
     </section>
 
-    <!-- footer Section -->
+    <!-- =============================================
+    FOOTER SECTION
+    ============================================== -->
     <footer>
         <div class="footer-content">
+            <!-- Social Media Links -->
             <div class="social-links">
                 <a href="https://www.instagram.com/business_lounge_cafe/" title="Instagram"><img src="https://cdn.cdnlogo.com/logos/i/92/instagram.svg" alt="Instagram" class="social-icon"></a>
             </div>
+            <!-- Contact Information -->
             <div class="footer-info">
                 <p>Hours: 07:30 PM to 02:00 AM</p>
                 <p>Address: Anwar May Street - Beside H&P Burger</p>
@@ -1063,14 +1099,17 @@
         </div>
     </footer>
     
-    <!-- Floating back to top button -->
+    <!-- =============================================
+    UTILITY COMPONENTS
+    ============================================== -->
+    <!-- Floating Back to Top Button -->
     <button id="floating-back-to-top" aria-label="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7"/>
         </svg>
     </button>
     
-    <!-- Add search results overlay container -->
+    <!-- Search Results Overlay -->
     <div class="search-results-overlay" id="searchResultsOverlay">
         <div class="search-results-container">
             <div class="search-results-header">
@@ -1082,6 +1121,7 @@
         </div>
     </div>
     
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
