@@ -530,7 +530,209 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Function to display search results
+    // Function to reset search state
+    function resetSearch() {
+        searchInput.value = '';
+        searchResultsOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = ''; // Ensure scrolling is restored
+    }
+    
+    // Function to navigate to a menu item
+    function navigateToMenuItem(item) {
+        // Find the category for this item
+        const categoryId = item.category.toLowerCase();
+        const categoryElement = document.querySelector(`.category[data-section="${categoryId}"]`);
+        
+        if (categoryElement) {
+            // First show the appropriate category
+            const sectionId = categoryElement.getAttribute('data-section');
+            
+            // Reset all sections first
+            menuSections.forEach(section => section.classList.remove('active'));
+            menuHeaders.forEach(header => header.style.display = 'none');
+            
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            const navCategory = document.querySelector(`.nav-category[data-category="${sectionId}"]`);
+            if (navCategory) {
+                navCategory.classList.add('active');
+            }
+            
+            // Show menu container
+            menuContainer.classList.add('active');
+            
+            // Minimize categories
+            categoriesSection.classList.add('minimized');
+            
+            // Show selected section and header
+            const selectedSection = document.getElementById(sectionId);
+            const selectedHeader = document.getElementById(sectionId + '-header');
+            
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            if (selectedHeader) {
+                selectedHeader.style.display = 'block';
+            }
+            
+            // For drinks category, ensure correct subcategory is active
+            if (sectionId === 'drinks' && item.subcategory) {
+                // Find the appropriate subcategory based on the item
+                const subcategoryContents = document.querySelectorAll('.subcategory-content');
+                
+                // Hide all subcategories first
+                subcategoryContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+                
+                // Find and activate the correct subcategory if possible
+                const subcategoryContent = item.element.closest('.subcategory-content');
+                if (subcategoryContent) {
+                    const subcategoryId = subcategoryContent.id;
+                    const targetContent = document.getElementById(subcategoryId);
+                    const subcategoryBtn = document.querySelector(`.subcategory-btn[data-target="${subcategoryId}"]`);
+                    
+                    if (targetContent) {
+                        // Update UI for subcategory buttons
+                        const subcategoryBtns = document.querySelectorAll('.subcategory-btn');
+                        subcategoryBtns.forEach(btn => btn.classList.remove('active'));
+                        if (subcategoryBtn) {
+                            subcategoryBtn.classList.add('active');
+                        }
+                        
+                        // Display the correct subcategory
+                        targetContent.style.display = 'block';
+                        targetContent.classList.add('active', 'fadeInAnimation');
+                    }
+                }
+            }
+            
+            // Short delay to ensure sections are displayed before scrolling
+            setTimeout(() => {
+                // Scroll to the item with smooth behavior
+                item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Highlight the item
+                item.element.classList.add('highlight-item');
+                setTimeout(() => {
+                    item.element.classList.remove('highlight-item');
+                }, 2000);
+            }, 300);
+        }
+    }
+    
+    // Improve click event handling for search results
+    function displaySearchResults(results) {
+        searchResultsContent.innerHTML = '';
+        
+        if (results.length === 0) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+            
+            results.forEach(item => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                
+                resultElement.innerHTML = `
+                    ${item.imageSrc ? `<img src="${item.imageSrc}" alt="${item.title}" class="search-result-image">` : ''}
+                    <div class="search-result-info">
+                        <div class="search-result-title">${item.title}</div>
+                        <div class="search-result-category">${item.category}${item.subcategory ? ' - ' + item.subcategory : ''}</div>
+                        <div class="search-result-price">${item.price}</div>
+                    </div>
+                `;
+                
+                // Store the item data on the element for access when clicked
+                resultElement.dataset.itemData = JSON.stringify({
+                    category: item.category,
+                    subcategory: item.subcategory
+                });
+                
+                // Create reference to the DOM element
+                const itemElement = item.element;
+                
+                // Add click handler
+                resultElement.addEventListener('click', function() {
+                    // First reset search and close overlay
+                    resetSearch();
+                    
+                    // Use a longer timeout to ensure overlay is fully closed
+                    setTimeout(() => {
+                        // Navigate to the item if it exists in the DOM
+                        if (itemElement && document.body.contains(itemElement)) {
+                            navigateToMenuItem(item);
+                        } else {
+                            // If element reference is lost, rebuild the items data and try again
+                            const menuItemsData = collectMenuItemsData();
+                            const matchingItem = menuItemsData.find(menuItem => 
+                                menuItem.title === item.title && 
+                                menuItem.category === item.category &&
+                                menuItem.subcategory === item.subcategory
+                            );
+                            
+                            if (matchingItem) {
+                                navigateToMenuItem(matchingItem);
+                            }
+                        }
+                    }, 300); // Longer delay to ensure overlay is fully closed
+                });
+                
+                searchResultsContent.appendChild(resultElement);
+            });
+        }
+    }
+    
+    // Search input event handlers
+    searchBtn.addEventListener('click', function() {
+        const query = searchInput.value;
+        
+        if (query.length >= 2) {
+            // Always get fresh data for each search
+            const results = performSearch(query);
+            displaySearchResults(results);
+            searchResultsOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+    });
+    
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = searchInput.value;
+            
+            if (query.length >= 2) {
+                // Always get fresh data for each search
+                const results = performSearch(query);
+                displaySearchResults(results);
+                searchResultsOverlay.classList.add('active');
+                document.body.classList.add('no-scroll');
+            }
+        }
+    });
+    
+    // Close search results
+    closeSearchResults.addEventListener('click', function() {
+        resetSearch();
+    });
+    
+    // Close search results when clicking outside
+    searchResultsOverlay.addEventListener('click', function(e) {
+        if (e.target === searchResultsOverlay) {
+            resetSearch();
+        }
+    });
+    
+    // Close search results with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchResultsOverlay.classList.contains('active')) {
+            resetSearch();
+        }
+    });
+    
+    // Improve click event handling for search results
     function displaySearchResults(results) {
         searchResultsContent.innerHTML = '';
         
@@ -554,10 +756,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Improved click event handling for search results
                 resultElement.addEventListener('click', function() {
-                    // First close the search overlay and restore body scrolling
-                    searchResultsOverlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    document.body.style.overflow = '';
+                    // Reset search state first
+                    resetSearch();
                     
                     // Small delay to ensure overlay is closed before navigating
                     setTimeout(() => {
@@ -641,6 +841,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 setTimeout(() => {
                                     item.element.classList.remove('highlight-item');
                                 }, 2000);
+                                
+                                // Re-focus search input for next search
+                                setTimeout(() => {
+                                    searchInput.focus();
+                                }, 500);
                             }, 300);
                         }
                     }, 100);
@@ -650,54 +855,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
-    // Search input event handlers
-    searchBtn.addEventListener('click', function() {
-        const query = searchInput.value;
-        const results = performSearch(query);
-        
-        if (query.length >= 2) {
-            displaySearchResults(results);
-            searchResultsOverlay.classList.add('active');
-            document.body.classList.add('no-scroll');
-        }
-    });
-    
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const query = searchInput.value;
-            const results = performSearch(query);
-            
-            if (query.length >= 2) {
-                displaySearchResults(results);
-                searchResultsOverlay.classList.add('active');
-                document.body.classList.add('no-scroll');
-            }
-        }
-    });
-    
-    // Close search results
-    closeSearchResults.addEventListener('click', function() {
-        searchResultsOverlay.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-    });
-    
-    // Close search results when clicking outside
-    searchResultsOverlay.addEventListener('click', function(e) {
-        if (e.target === searchResultsOverlay) {
-            searchResultsOverlay.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-    
-    // Close search results with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchResultsOverlay.classList.contains('active')) {
-            searchResultsOverlay.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-    
+
     // Add styles for highlighted items
     document.head.insertAdjacentHTML('beforeend', `
         <style>
