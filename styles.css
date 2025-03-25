@@ -1422,7 +1422,7 @@ footer::before {
 .subcategory-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    color: var(--primary-color);
+    color: var (--primary-color);
     border-color: var(--primary-color);
 }
 
@@ -1458,6 +1458,7 @@ footer::before {
     padding-bottom: 1rem;
 }
 
+/* Decorative underline for subcategory titles */
 .subcategory-title::after {
     content: '';
     position: absolute;
@@ -1469,39 +1470,50 @@ footer::before {
     background: linear-gradient(to right, transparent, var(--primary-color), transparent);
 }
 
-/* Responsive adjustments for subcategories */
+/* ===============================================
+   RESPONSIVE ADJUSTMENTS - SUBCATEGORIES 
+   =============================================== */
+
+/* Tablet adjustments (768px and below) */
 @media (max-width: 768px) {
+    /* Horizontal scrolling container for subcategories */
     .subcategories {
         padding-bottom: 1.5rem;
         justify-content: flex-start;
         overflow-x: auto;
         scroll-padding: 1rem;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none; /* Hide scrollbar - Firefox */
         padding-bottom: 10px;
     }
     
+    /* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
     .subcategories::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
+        display: none;
     }
     
+    /* Smaller buttons for mobile view */
     .subcategory-btn {
         padding: 0.6rem 1rem;
         font-size: 0.85rem;
     }
     
+    /* Adjusted title size for smaller screens */
     .subcategory-title {
         font-size: 1.6rem;
         margin-bottom: 1.5rem;
     }
 }
 
+/* Mobile adjustments (480px and below) */
 @media (max-width: 480px) {
+    /* Even smaller buttons for very small screens */
     .subcategory-btn {
         padding: 0.5rem 0.9rem;
         font-size: 0.8rem;
     }
     
+    /* Smaller title with reduced letter spacing */
     .subcategory-title {
         font-size: 1.4rem;
         letter-spacing: 2px;
@@ -1509,8 +1521,9 @@ footer::before {
     }
 }
 
-/* Add visual cues for horizontal scrolling on mobile */
+/* Visual indicator for scrollable content on devices up to 992px */
 @media (max-width: 992px) {
+    /* Gradient fade-out at the right edge to indicate more content */
     .subcategories:after {
         content: '';
         position: absolute;
