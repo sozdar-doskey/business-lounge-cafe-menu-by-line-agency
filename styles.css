@@ -595,9 +595,11 @@ header::after {
     box-shadow: var(--shadow);
     backdrop-filter: blur(15px);
     border: 1px solid var(--primary-color);
-    display: none; /* Hide initially */
+    display: none !important; /* Hide initially with higher specificity */
     position: relative;
     overflow: hidden;
+    visibility: hidden; /* Added to ensure it's completely hidden */
+    opacity: 0; /* Added for smoother transitions */
 }
 
 .menu-container::before {
@@ -612,7 +614,9 @@ header::after {
 }
 
 .menu-container.active {
-    display: block;
+    display: block !important; /* Override with higher specificity */
+    visibility: visible; /* Show when active */
+    opacity: 1; /* Full opacity when active */
     animation: fadeIn 0.8s ease;
 }
 
@@ -620,6 +624,11 @@ header::after {
     text-align: center;
     margin-bottom: 3.5rem;
     position: relative;
+    display: none; /* Hide by default */
+}
+
+.menu-container.active .menu-header {
+    display: block; /* Only show in active containers */
 }
 
 .menu-header h2 {
@@ -731,7 +740,7 @@ header::after {
 
 /* Elegant Button */
 .back-to-top {
-    display: block;
+    display: none; /* Hide by default instead of block */
     margin: 3rem auto 1rem;
     padding: 1rem 2.5rem;
     background: transparent;
@@ -749,6 +758,12 @@ header::after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Only show the back-to-top button when its parent menu section is active */
+.menu-section.active .back-to-top {
+    display: block;
+    animation: fadeIn 0.8s ease;
+}
+
 .back-to-top::before {
     content: '';
     position: absolute;
@@ -761,13 +776,53 @@ header::after {
     z-index: -1;
 }
 
+/* Add hover effect to back-to-top button */
 .back-to-top:hover {
     color: var(--text-dark);
-    box-shadow: 0 8px 20px rgba(200, 169, 126, 0.4);
 }
 
 .back-to-top:hover::before {
     width: 100%;
+}
+
+/* Floating Back to Top Button */
+#floating-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+    transform: translateY(20px);
+}
+
+/* Special handling for desserts and hookah sections */
+#desserts-header, #hookah-header {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Remove container from desserts and hookah sections */
+#desserts.menu-section, #hookah.menu-section {
+    padding-top: 0;
+}
+
+/* Adjust spacing between menu-header and menu items for desserts and hookah */
+#desserts-header + #desserts .menu-items,
+#hookah-header + #hookah .menu-items {
+    margin-top: 2rem;
 }
 
 /* Floating Back to Top Button */
@@ -1242,7 +1297,7 @@ footer::before {
     display: block;
     width: 28px;
     height: 2px;
-    background-color: var(--primary-color); /* Fix: Removed space between var and (--primary-color) */
+    background-color: var (--primary-color);
     transition: all 0.3s ease;
 }
 
