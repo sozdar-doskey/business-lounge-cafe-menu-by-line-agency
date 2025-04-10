@@ -218,20 +218,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedHeader.style.display = 'block';
             }
             
-            // NEW CODE: Reset all subcategory displays when changing main categories
-            const subcategoryContents = document.querySelectorAll('.subcategory-content');
-            subcategoryContents.forEach(content => {
-                if (sectionId !== 'drinks') {
-                    // If not in drinks section, hide all subcategory content
+            // Handle the drinks category - show the first subcategory content by default
+            if (sectionId === 'drinks') {
+                // Find all subcategory contents and hide them
+                const subcategoryContents = document.querySelectorAll('.subcategory-content');
+                subcategoryContents.forEach(content => {
                     content.classList.remove('active');
                     content.style.display = 'none';
-                } else {
-                    // In drinks section, only show the active subcategory
-                    if (!content.classList.contains('active')) {
-                        content.style.display = 'none';
-                    }
+                });
+                
+                // Get the first subcategory button and content
+                const firstSubcategoryBtn = document.querySelector('.subcategory-btn');
+                const firstSubcategoryContent = document.getElementById(firstSubcategoryBtn.getAttribute('data-target'));
+                
+                // Activate the first subcategory button
+                const subcategoryBtns = document.querySelectorAll('.subcategory-btn');
+                subcategoryBtns.forEach(btn => btn.classList.remove('active'));
+                firstSubcategoryBtn.classList.add('active');
+                
+                // Show the first subcategory content
+                if (firstSubcategoryContent) {
+                    firstSubcategoryContent.style.display = 'block';
+                    firstSubcategoryContent.classList.add('active');
                 }
-            });
+            } else {
+                // For other categories, ensure all subcategory contents are hidden
+                const subcategoryContents = document.querySelectorAll('.subcategory-content');
+                subcategoryContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+            }
             
             // Scroll to menu container for all categories
             scrollToElement(menuContainer);
