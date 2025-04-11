@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,13 +24,14 @@
             <div class="nav-logo">
                 <img src="./images/logo.png" alt="Business Lounge Logo" class="nav-logo-img" loading="lazy">
             </div>
-            
+
             <!-- Search Functionality -->
             <div class="search-container">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Search">
                     <button class="search-btn" id="searchBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
@@ -36,24 +39,29 @@
                 </div>
                 <div class="search-results" id="searchResults"></div>
             </div>
-            
+
             <!-- Mobile Menu Toggle Button -->
             <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            
+
             <!-- Navigation Menu -->
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#drinks-header" class="nav-link nav-category" data-category="drinks">Drinks</a></li>
-                <li class="nav-item"><a href="#desserts-header" class="nav-link nav-category" data-category="desserts">Desserts</a></li>
-                <li class="nav-item"><a href="#hookah-header" class="nav-link nav-category" data-category="hookah">Hookah</a></li>
+                <li class="nav-item"><a href="#drinks-header" class="nav-link nav-category"
+                        data-category="drinks">Drinks</a></li>
+                <li class="nav-item"><a href="#desserts-header" class="nav-link nav-category"
+                        data-category="desserts">Desserts</a></li>
+                <li class="nav-item"><a href="#hookah-header" class="nav-link nav-category"
+                        data-category="hookah">Hookah</a></li>
                 <li class="nav-item"><a href="#about-us" class="nav-link">About Us</a></li>
                 <!-- Removed gallery link -->
-                <li class="nav-item"><a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank" class="nav-link nav-location">Location</a></li>
-                <li class="nav-item"><a href="https://www.instagram.com/business_lounge_cafe/" target="_blank" class="nav-link nav-location">Follow Us</a></li>
+                <li class="nav-item"><a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank"
+                        class="nav-link nav-location">Location</a></li>
+                <li class="nav-item"><a href="https://www.instagram.com/business_lounge_cafe/" target="_blank"
+                        class="nav-link nav-location">Follow Us</a></li>
             </ul>
         </div>
     </nav>
@@ -81,19 +89,21 @@
         <!-- Category Images for Quick Navigation -->
         <div id="categories-section" class="categories">
             <div class="category" data-section="drinks">
-                <img src="https://img.freepik.com/free-photo/refreshing-cocktail-wooden-bar-city-nightlife-celebration-generated-by-artificial-intelligence_25030-63440.jpg?t=st=1742836430~exp=1742840030~hmac=0d4a878352559a3aeb6c205c00be5b44120ed3b530847f59bd34846321491e1a&w=1060" alt="Drinks" loading="lazy">
+                <img src="https://img.freepik.com/free-photo/refreshing-cocktail-wooden-bar-city-nightlife-celebration-generated-by-artificial-intelligence_25030-63440.jpg?t=st=1742836430~exp=1742840030~hmac=0d4a878352559a3aeb6c205c00be5b44120ed3b530847f59bd34846321491e1a&w=1060"
+                    alt="Drinks" loading="lazy">
                 <div class="category-overlay">Drinks</div>
             </div>
             <div class="category" data-section="desserts">
-                <img src="https://img.freepik.com/free-photo/pumpkin-cheesecake-slice-delicious-desserts_1268-27893.jpg?uid=R184006353&ga=GA1.1.942841538.1696692884&semt=ais_hybrid" alt="Desserts" loading="lazy">    
+                <img src="https://img.freepik.com/free-photo/pumpkin-cheesecake-slice-delicious-desserts_1268-27893.jpg?uid=R184006353&ga=GA1.1.942841538.1696692884&semt=ais_hybrid"
+                    alt="Desserts" loading="lazy">
                 <div class="category-overlay">Desserts</div>
             </div>
             <div class="category" data-section="hookah">
-                <img src="./images/hookah.jpg" alt="Hookah" loading="lazy">    
+                <img src="./images/hookah.jpg" alt="Hookah" loading="lazy">
                 <div class="category-overlay">Hookah</div>
             </div>
         </div>
-        
+
         <!-- =============================================
         MENU CONTAINER - HOLDS ALL MENU SECTIONS
         ============================================== -->
@@ -132,80 +142,97 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Our signature iced latte with perfectly balanced espresso and milk.</p>
+                                <p class="menu-item-description">Our signature iced latte with perfectly balanced
+                                    espresso and milk.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/فانيلا ايس لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/فانيلا ايس لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Vanilla Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Smooth iced latte infused with premium vanilla flavor.</p>
+                                <p class="menu-item-description">Smooth iced latte infused with premium vanilla flavor.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/ايس كراميل ماكياتو.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس كراميل ماكياتو.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Caramel Macchiato</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Creamy iced latte drizzled with rich caramel flavor.</p>
+                                <p class="menu-item-description">Creamy iced latte drizzled with rich caramel flavor.
+                                </p>
                             </div>
                         </div>
 
                         <div class="menu-item">
-                            <img src="./images/ايس هيزل نات لاتيه.JPG" alt="Hazelnut Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس هيزل نات لاتيه.JPG" alt="Hazelnut Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Hazelnut Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Aromatic hazelnut blended perfectly with our signature iced latte.</p>
+                                <p class="menu-item-description">Aromatic hazelnut blended perfectly with our signature
+                                    iced latte.</p>
                             </div>
                         </div>
-                      
+
                         <div class="menu-item">
-                            <img src="./images/ايس بستاشيو لاتيه.JPG" alt="Pistachio Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس بستاشيو لاتيه.JPG" alt="Pistachio Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Pistachio Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Luxurious pistachio flavor combined with our creamy iced latte.</p>
+                                <p class="menu-item-description">Luxurious pistachio flavor combined with our creamy
+                                    iced latte.</p>
                             </div>
                         </div>
-                      
+
                         <div class="menu-item">
-                            <img src="./images/ايس سبانيش لاتيه.JPG" alt="Spanish Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس سبانيش لاتيه.JPG" alt="Spanish Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Spanish Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Iced latte with condensed milk for a sweet, rich flavor.</p>
+                                <p class="menu-item-description">Iced latte with condensed milk for a sweet, rich
+                                    flavor.</p>
                             </div>
                         </div>
 
                         <div class="menu-item">
-                            <img src="./images/ايس روز لاتيه.JPG" alt="Ice Rose Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس روز لاتيه.JPG" alt="Ice Rose Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Rose Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Elegant iced latte infused with delicate rose flavor for a floral, aromatic experience.</p>
+                                <p class="menu-item-description">Elegant iced latte infused with delicate rose flavor
+                                    for a floral, aromatic experience.</p>
                             </div>
                         </div>
 
                         <div class="menu-item">
-                            <img src="./images/ايس فلات وايت.JPG" alt="Ice Flat White" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس فلات وايت.JPG" alt="Ice Flat White" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Flat White</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Smooth double espresso combined with velvety cold milk, creating a strong yet balanced refreshing coffee experience.</p>
+                                <p class="menu-item-description">Smooth double espresso combined with velvety cold milk,
+                                    creating a strong yet balanced refreshing coffee experience.</p>
                             </div>
                         </div>
 
                         <div class="menu-item">
-                            <img src="./images/ايس هوني الموند ميلك فلات وايت.JPG" alt="Ice Honey Almond Milk Flat White" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس هوني الموند ميلك فلات وايت.JPG"
+                                alt="Ice Honey Almond Milk Flat White" class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Ice Honey Almond Milk Flat White</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Refreshing iced flat white made with almond milk and sweetened with natural honey, perfect for a dairy-free option.</p>
+                                <p class="menu-item-description">Refreshing iced flat white made with almond milk and
+                                    sweetened with natural honey, perfect for a dairy-free option.</p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -219,64 +246,79 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Our signature iced latte with perfectly balanced espresso and milk.</p>
+                                <p class="menu-item-description">Our signature iced latte with perfectly balanced
+                                    espresso and milk.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/فانيلا لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/فانيلا لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Vanilla Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Smooth iced latte infused with premium vanilla flavor.</p>
+                                <p class="menu-item-description">Smooth iced latte infused with premium vanilla flavor.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/كراميل لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/كراميل لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Creamy iced latte drizzled with rich caramel flavor.</p>
+                                <p class="menu-item-description">Creamy iced latte drizzled with rich caramel flavor.
+                                </p>
                             </div>
                         </div>
 
                         <div class="menu-item">
-                            <img src="./images/هيزل نت لاتيه.JPG" alt="Hazelnut Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/هيزل نت لاتيه.JPG" alt="Hazelnut Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Hazelnut Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Aromatic hazelnut blended perfectly with our signature iced latte.</p>
+                                <p class="menu-item-description">Aromatic hazelnut blended perfectly with our signature
+                                    iced latte.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/كوكونات كاباجينو.JPG" alt="Coconut Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/كوكونات كاباجينو.JPG" alt="Coconut Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Coconut Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Tropical coconut flavor mixed with our refreshing iced latte.</p>
+                                <p class="menu-item-description">Tropical coconut flavor mixed with our refreshing iced
+                                    latte.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/بستاشيو لاتيه.JPG" alt="Pistachio Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/بستاشيو لاتيه.JPG" alt="Pistachio Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Pistachio Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Luxurious pistachio flavor combined with our creamy iced latte.</p>
+                                <p class="menu-item-description">Luxurious pistachio flavor combined with our creamy
+                                    iced latte.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/سينمون لاتيه.JPG" alt="Cinnamon Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/سينمون لاتيه.JPG" alt="Cinnamon Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Cinnamon Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Warm cinnamon spice mixed with cool, refreshing iced latte.</p>
+                                <p class="menu-item-description">Warm cinnamon spice mixed with cool, refreshing iced
+                                    latte.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/سبانيش لاتيه.JPG" alt="Spanish Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/سبانيش لاتيه.JPG" alt="Spanish Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Spanish Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Iced latte with condensed milk for a sweet, rich flavor.</p>
+                                <p class="menu-item-description">Iced latte with condensed milk for a sweet, rich
+                                    flavor.</p>
                             </div>
                         </div>
 
@@ -285,7 +327,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Rose Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Elegant latte infused with delicate rose flavor for a floral, aromatic experience.</p>
+                                <p class="menu-item-description">Elegant latte infused with delicate rose flavor for a
+                                    floral, aromatic experience.</p>
                             </div>
                         </div>
 
@@ -294,7 +337,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Americano</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Rich espresso diluted with hot water for a balanced flavor.</p>
+                                <p class="menu-item-description">Rich espresso diluted with hot water for a balanced
+                                    flavor.</p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -302,27 +346,33 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">V60</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Pour-over coffee with a clean, bright flavor profile.</p>
+                                <p class="menu-item-description">Pour-over coffee with a clean, bright flavor profile.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Flat White" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Flat White" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Flat White</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Espresso with steamed milk and minimal foam for a velvety texture.</p>
+                                <p class="menu-item-description">Espresso with steamed milk and minimal foam for a
+                                    velvety texture.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/هوني الموند ميلك فلات وايت.JPG" alt="Honey Almond Milk Flat White" class="menu-item-image" loading="lazy">
+                            <img src="./images/هوني الموند ميلك فلات وايت.JPG" alt="Honey Almond Milk Flat White"
+                                class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Honey Almond Milk Flat White</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Delicate flat white made with almond milk and sweetened with honey.</p>
+                                <p class="menu-item-description">Delicate flat white made with almond milk and sweetened
+                                    with honey.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/تركش كوفي.JPG" alt="Turkish Coffee" class="menu-item-image" loading="lazy">
+                            <img src="./images/تركش كوفي.JPG" alt="Turkish Coffee" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Turkish Coffee</h3>
                                 <p class="menu-item-price">3000 IQD</p>
@@ -330,11 +380,13 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/كراميل ماكياتو.JPG" alt="Caramel Macchiato" class="menu-item-image" loading="lazy">
+                            <img src="./images/كراميل ماكياتو.JPG" alt="Caramel Macchiato" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel Macchiato</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Espresso with steamed milk, vanilla, and caramel drizzle.</p>
+                                <p class="menu-item-description">Espresso with steamed milk, vanilla, and caramel
+                                    drizzle.</p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -342,15 +394,18 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Coffee Mocha</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Espresso with steamed milk and rich chocolate flavor.</p>
+                                <p class="menu-item-description">Espresso with steamed milk and rich chocolate flavor.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="White Chocolate Mocha" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="White Chocolate Mocha" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">White Chocolate Mocha</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Espresso with steamed milk and creamy white chocolate.</p>
+                                <p class="menu-item-description">Espresso with steamed milk and creamy white chocolate.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -358,11 +413,13 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Siphon</h3>
                                 <p class="menu-item-price">8000 IQD</p>
-                                <p class="menu-item-description">Vacuum-brewed coffee with a clean, distinct flavor profile.</p>
+                                <p class="menu-item-description">Vacuum-brewed coffee with a clean, distinct flavor
+                                    profile.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/فلتر كوفي.JPG" alt="Filter Coffee" class="menu-item-image" loading="lazy">
+                            <img src="./images/فلتر كوفي.JPG" alt="Filter Coffee" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Filter Coffee</h3>
                                 <p class="menu-item-price">6000 IQD</p>
@@ -370,60 +427,71 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/سينمون دولجا كريم.JPG" alt="Cinnamon Dolce Cream" class="menu-item-image" loading="lazy">
+                            <img src="./images/سينمون دولجا كريم.JPG" alt="Cinnamon Dolce Cream" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Cinnamon Dolce Cream</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Sweet, spiced coffee topped with cinnamon dolce flavored cream.</p>
+                                <p class="menu-item-description">Sweet, spiced coffee topped with cinnamon dolce
+                                    flavored cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Business Coffee" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Business Coffee" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Business Coffee</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Our signature house blend with a rich, distinctive flavor.</p>
+                                <p class="menu-item-description">Our signature house blend with a rich, distinctive
+                                    flavor.</p>
 
-                                </div>
-                                </div>
-                                <div class="menu-item">
-                                    <img src="./images/كاباتشينو.JPG" alt="Cappuccino" class="menu-item-image" loading="lazy">
-                                    <div class="menu-item-info">
-                                        <h3 class="menu-item-title">Cappuccino</h3>
-                                        <p class="menu-item-price">5000 IQD</p>
-                                        <p class="menu-item-description">Classic espresso topped with steamed milk and thick foam.</p>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <img src="https://placehold.co/400x300" alt="Coconut Cappuccino" class="menu-item-image" loading="lazy">
-                                    <div class="menu-item-info">
-                                        <h3 class="menu-item-title">Coconut Cappuccino</h3>
-                                        <p class="menu-item-price">5500 IQD</p>
-                                        <p class="menu-item-description">Creamy cappuccino infused with coconut flavor.</p>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <img src="./images/كاباتشينو بدون حليب.JPG" alt="Cappuccino Without Milk" class="menu-item-image" loading="lazy">
-                                    <div class="menu-item-info">
-                                        <h3 class="menu-item-title">Cappuccino Without Milk</h3>
-                                        <p class="menu-item-price">6000 IQD</p>
-                                        <p class="menu-item-description">A dairy-free version of our popular cappuccino.</p>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <img src="./images/هوت جوكليت.JPG" alt="Hot Chocolate" class="menu-item-image" loading="lazy">
-                                    <div class="menu-item-info">
-                                        <h3 class="menu-item-title">Hot Chocolate</h3>
-                                        <p class="menu-item-price">4000 IQD</p>
-                                        <p class="menu-item-description">Rich and creamy hot chocolate made with premium cocoa.</p>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <img src="./images/مارشاميلو هوت جوكليت.JPG" alt="Hot Chocolate Marshmallow" class="menu-item-image" loading="lazy">
-                                    <div class="menu-item-info">
-                                        <h3 class="menu-item-title">Hot Chocolate Marshmallow</h3>
-                                        <p class="menu-item-price">5000 IQD</p>
-                                        <p class="menu-item-description">Decadent hot chocolate topped with fluffy marshmallows.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./images/كاباتشينو.JPG" alt="Cappuccino" class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Cappuccino</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Classic espresso topped with steamed milk and thick
+                                    foam.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://placehold.co/400x300" alt="Coconut Cappuccino" class="menu-item-image"
+                                loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Coconut Cappuccino</h3>
+                                <p class="menu-item-price">5500 IQD</p>
+                                <p class="menu-item-description">Creamy cappuccino infused with coconut flavor.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./images/كاباتشينو بدون حليب.JPG" alt="Cappuccino Without Milk"
+                                class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Cappuccino Without Milk</h3>
+                                <p class="menu-item-price">6000 IQD</p>
+                                <p class="menu-item-description">A dairy-free version of our popular cappuccino.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./images/هوت جوكليت.JPG" alt="Hot Chocolate" class="menu-item-image"
+                                loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Hot Chocolate</h3>
+                                <p class="menu-item-price">4000 IQD</p>
+                                <p class="menu-item-description">Rich and creamy hot chocolate made with premium cocoa.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./images/مارشاميلو هوت جوكليت.JPG" alt="Hot Chocolate Marshmallow"
+                                class="menu-item-image" loading="lazy">
+                            <div class="menu-item-info">
+                                <h3 class="menu-item-title">Hot Chocolate Marshmallow</h3>
+                                <p class="menu-item-price">5000 IQD</p>
+                                <p class="menu-item-description">Decadent hot chocolate topped with fluffy marshmallows.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -443,15 +511,18 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/اسبريسو دبل.JPG" alt="Espresso Double" class="menu-item-image" loading="lazy">
+                            <img src="./images/اسبريسو دبل.JPG" alt="Espresso Double" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Espresso Double</h3>
                                 <p class="menu-item-price">4000 IQD</p>
-                                <p class="menu-item-description">Two shots of our premium espresso for an extra kick.</p>
+                                <p class="menu-item-description">Two shots of our premium espresso for an extra kick.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/اسبريسو كومبانا.JPG" alt="Espresso Con Panna" class="menu-item-image" loading="lazy">
+                            <img src="./images/اسبريسو كومبانا.JPG" alt="Espresso Con Panna" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Espresso Con Panna</h3>
                                 <p class="menu-item-price">3500 IQD</p>
@@ -459,19 +530,23 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/اسبريسو افوكادو.JPG" alt="Espresso Affogato" class="menu-item-image" loading="lazy">
+                            <img src="./images/اسبريسو افوكادو.JPG" alt="Espresso Affogato" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Espresso Affogato</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Hot espresso poured over a scoop of vanilla ice cream.</p>
+                                <p class="menu-item-description">Hot espresso poured over a scoop of vanilla ice cream.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/اسبريسو مكياتو.JPG" alt="Espresso Macchiato" class="menu-item-image" loading="lazy">
+                            <img src="./images/اسبريسو مكياتو.JPG" alt="Espresso Macchiato" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Espresso Macchiato</h3>
                                 <p class="menu-item-price">3500 IQD</p>
-                                <p class="menu-item-description">Espresso "stained" with a small amount of foamed milk.</p>
+                                <p class="menu-item-description">Espresso "stained" with a small amount of foamed milk.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -483,35 +558,43 @@
                     <div class="menu-items">
                         <!-- Diet Coffee Menu Items -->
                         <div class="menu-item">
-                            <img src="./images/كراميل لاتيه.JPG" alt="Caramel Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/كراميل لاتيه.JPG" alt="Caramel Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Light, low-calorie caramel latte made with sugar-free syrup.</p>
+                                <p class="menu-item-description">Light, low-calorie caramel latte made with sugar-free
+                                    syrup.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/فانيلا لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/فانيلا لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Vanilla Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Creamy vanilla latte made with sugar-free vanilla syrup.</p>
+                                <p class="menu-item-description">Creamy vanilla latte made with sugar-free vanilla
+                                    syrup.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/DSC00084.JPG" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/DSC00084.JPG" alt="Honey Almond Milk Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Dairy-free latte made with almond milk and a touch of natural honey.</p>
+                                <p class="menu-item-description">Dairy-free latte made with almond milk and a touch of
+                                    natural honey.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Oat Milk Latte</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Rich and creamy latte made with plant-based oat milk.</p>
+                                <p class="menu-item-description">Rich and creamy latte made with plant-based oat milk.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -523,35 +606,43 @@
                     <div class="menu-items">
                         <!-- Diet Ice Coffee Menu Items -->
                         <div class="menu-item">
-                            <img src="./images/ايس كراميل ماكياتو.JPG" alt="Caramel Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/ايس كراميل ماكياتو.JPG" alt="Caramel Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Refreshing iced caramel latte made with sugar-free syrup.</p>
+                                <p class="menu-item-description">Refreshing iced caramel latte made with sugar-free
+                                    syrup.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/فانيلا ايس لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image" loading="lazy">
+                            <img src="./images/فانيلا ايس لاتيه.JPG" alt="Vanilla Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Vanilla Latte</h3>
                                 <p class="menu-item-price">4500 IQD</p>
-                                <p class="menu-item-description">Cool and creamy iced vanilla latte made with sugar-free vanilla syrup.</p>
+                                <p class="menu-item-description">Cool and creamy iced vanilla latte made with sugar-free
+                                    vanilla syrup.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Honey Almond Milk Latte"
+                                class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Honey Almond Milk Latte</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Dairy-free iced latte made with almond milk and a touch of natural honey.</p>
+                                <p class="menu-item-description">Dairy-free iced latte made with almond milk and a touch
+                                    of natural honey.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Oat Milk Latte" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Oat Milk Latte</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Chilled latte made with plant-based oat milk, perfect for a guilt-free refreshment.</p>
+                                <p class="menu-item-description">Chilled latte made with plant-based oat milk, perfect
+                                    for a guilt-free refreshment.</p>
                             </div>
                         </div>
                     </div>
@@ -560,9 +651,10 @@
                 <!-- Mojito Subcategory Content -->
                 <div id="mojito" class="subcategory-content">
                     <h3 class="subcategory-title">🍹 Mojito</h3>
-                    <div class="menu-items">    
+                    <div class="menu-items">
                         <div class="menu-item">
-                            <img src="./images/كلاسيك موهيتو.JPG" alt="Classic Mojito" class="menu-item-image" loading="lazy">
+                            <img src="./images/كلاسيك موهيتو.JPG" alt="Classic Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Classic Mojito</h3>
                                 <p class="menu-item-price">4500 IQD</p>
@@ -570,15 +662,18 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/موهيتو فراولة.JPG" alt="Strawberry Mojito" class="menu-item-image" loading="lazy">
+                            <img src="./images/موهيتو فراولة.JPG" alt="Strawberry Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Strawberry Mojito</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Classic mojito infused with sweet strawberry flavor.</p>
+                                <p class="menu-item-description">Classic mojito infused with sweet strawberry flavor.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/جيري موهيتو.JPG" alt="Cherry Mojito" class="menu-item-image" loading="lazy">
+                            <img src="./images/جيري موهيتو.JPG" alt="Cherry Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Cherry Mojito</h3>
                                 <p class="menu-item-price">5000 IQD</p>
@@ -586,15 +681,18 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/بلو بيري موهيتو.JPG" alt="Blueberry Mojito" class="menu-item-image" loading="lazy">
+                            <img src="./images/بلو بيري موهيتو.JPG" alt="Blueberry Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Blueberry Mojito</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Mojito mixed with fresh blueberries for a fruity flavor.</p>
+                                <p class="menu-item-description">Mojito mixed with fresh blueberries for a fruity
+                                    flavor.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Mango Mojito" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Mango Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Mango Mojito</h3>
                                 <p class="menu-item-price">5000 IQD</p>
@@ -602,11 +700,13 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/بسنس موهيتو.JPG" alt="Business Mojito" class="menu-item-image" loading="lazy">
+                            <img src="./images/بسنس موهيتو.JPG" alt="Business Mojito" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Business Mojito</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Our signature house mojito with a special blend of flavors.</p>
+                                <p class="menu-item-description">Our signature house mojito with a special blend of
+                                    flavors.</p>
                             </div>
                         </div>
                     </div>
@@ -621,31 +721,38 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Bloody Mery</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Spicy tomato-based mocktail with a blend of savory spices.</p>
+                                <p class="menu-item-description">Spicy tomato-based mocktail with a blend of savory
+                                    spices.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/بينا كولادا.JPG" alt="Pina Colada" class="menu-item-image" loading="lazy">
+                            <img src="./images/بينا كولادا.JPG" alt="Pina Colada" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Pina Colada</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Tropical blend of coconut cream and pineapple juice.</p>
+                                <p class="menu-item-description">Tropical blend of coconut cream and pineapple juice.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/موكتيل فراولة ليمون.JPG" alt="Strawberry Lemonade" class="menu-item-image" loading="lazy">
+                            <img src="./images/موكتيل فراولة ليمون.JPG" alt="Strawberry Lemonade"
+                                class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Strawberry Lemonade</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Sweet and tangy lemonade mixed with fresh strawberries.</p>
+                                <p class="menu-item-description">Sweet and tangy lemonade mixed with fresh strawberries.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Paradise" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Paradise" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Paradise</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Refreshing blend of tropical fruits and citrus juices.</p>
+                                <p class="menu-item-description">Refreshing blend of tropical fruits and citrus juices.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -664,43 +771,53 @@
                     <h3 class="subcategory-title">⚡ Redbull</h3>
                     <div class="menu-items">
                         <div class="menu-item">
-                            <img src="./images/ستروبري فيزلير.JPG" alt="Strawberry Fizzler" class="menu-item-image" loading="lazy">
+                            <img src="./images/ستروبري فيزلير.JPG" alt="Strawberry Fizzler" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Strawberry Fizzler</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Redbull mixed with strawberry syrup and a splash of soda.</p>
+                                <p class="menu-item-description">Redbull mixed with strawberry syrup and a splash of
+                                    soda.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/بلو تيك فليزلير مشروب طاقة.JPG" alt="Bluetiki Fizzler" class="menu-item-image" loading="lazy">
+                            <img src="./images/بلو تيك فليزلير مشروب طاقة.JPG" alt="Bluetiki Fizzler"
+                                class="menu-item-image" loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Bluetiki Fizzler</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Redbull infused with blue curacao syrup for a tropical twist.</p>
+                                <p class="menu-item-description">Redbull infused with blue curacao syrup for a tropical
+                                    twist.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/يوزيتيك مشروب طاقة.JPG" alt="Yuztiki" class="menu-item-image" loading="lazy">
+                            <img src="./images/يوزيتيك مشروب طاقة.JPG" alt="Yuztiki" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Yuztiki</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Redbull with yuzu citrus flavor for a refreshing kick.</p>
+                                <p class="menu-item-description">Redbull with yuzu citrus flavor for a refreshing kick.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/رمان مشروب طاقة.JPG" alt="Pomegranate" class="menu-item-image" loading="lazy">
+                            <img src="./images/رمان مشروب طاقة.JPG" alt="Pomegranate" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Pomegranate</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Redbull mixed with pomegranate syrup for a sweet and tangy flavor.</p>
+                                <p class="menu-item-description">Redbull mixed with pomegranate syrup for a sweet and
+                                    tangy flavor.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image" loading="lazy">
+                            <img src="https://placehold.co/400x300" alt="Business" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Business</h3>
                                 <p class="menu-item-price">5500 IQD</p>
-                                <p class="menu-item-description">Our signature Redbull mix with a special blend of flavors.</p>
+                                <p class="menu-item-description">Our signature Redbull mix with a special blend of
+                                    flavors.</p>
                             </div>
                         </div>
                     </div>
@@ -711,11 +828,13 @@
                     <h3 class="subcategory-title">🍧 Milkshake</h3>
                     <div class="menu-items">
                         <div class="menu-item">
-                            <img src="./images/جوكليت ميلك شيك.JPG" alt="Chocolate" class="menu-item-image" loading="lazy">
+                            <img src="./images/جوكليت ميلك شيك.JPG" alt="Chocolate" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Chocolate</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Rich and creamy chocolate milkshake topped with whipped cream.</p>
+                                <p class="menu-item-description">Rich and creamy chocolate milkshake topped with whipped
+                                    cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -731,23 +850,28 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Kinder</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Milkshake made with Kinder chocolate for a unique flavor.</p>
+                                <p class="menu-item-description">Milkshake made with Kinder chocolate for a unique
+                                    flavor.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/ميلك شيك كراميل.JPG" alt="Caramel" class="menu-item-image" loading="lazy">
+                            <img src="./images/ميلك شيك كراميل.JPG" alt="Caramel" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Sweet milkshake with rich caramel syrup and whipped cream.</p>
+                                <p class="menu-item-description">Sweet milkshake with rich caramel syrup and whipped
+                                    cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/ميلك شيك فراولة.JPG" alt="Strawberry" class="menu-item-image" loading="lazy">
+                            <img src="./images/ميلك شيك فراولة.JPG" alt="Strawberry" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Strawberry</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Classic strawberry milkshake made with fresh strawberries.</p>
+                                <p class="menu-item-description">Classic strawberry milkshake made with fresh
+                                    strawberries.</p>
                             </div>
                         </div>
                     </div>
@@ -758,19 +882,23 @@
                     <h3 class="subcategory-title">🍨 Frappe</h3>
                     <div class="menu-items">
                         <div class="menu-item">
-                            <img src="./images/فرابي موكا كوكي.JPG" alt="Mocha Coco Frappe" class="menu-item-image" loading="lazy">
+                            <img src="./images/فرابي موكا كوكي.JPG" alt="Mocha Coco Frappe" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Mocha Coco Frappe</h3>
                                 <p class="menu-item-price">6500 IQD</p>
-                                <p class="menu-item-description">Blended mocha frappe with coconut flavor and whipped cream.</p>
+                                <p class="menu-item-description">Blended mocha frappe with coconut flavor and whipped
+                                    cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/موكا فرابي.JPG" alt="Mocha Frappe" class="menu-item-image" loading="lazy">
+                            <img src="./images/موكا فرابي.JPG" alt="Mocha Frappe" class="menu-item-image"
+                                loading="lazy">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Mocha Frappe</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Chocolate and coffee blended with ice and topped with cream.</p>
+                                <p class="menu-item-description">Chocolate and coffee blended with ice and topped with
+                                    cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -778,7 +906,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Caramel Frappe</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Blended coffee with caramel syrup, topped with whipped cream.</p>
+                                <p class="menu-item-description">Blended coffee with caramel syrup, topped with whipped
+                                    cream.</p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -786,15 +915,18 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Vanilla Frappe</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Creamy vanilla blended with coffee and ice for a refreshing treat.</p>
+                                <p class="menu-item-description">Creamy vanilla blended with coffee and ice for a
+                                    refreshing treat.</p>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="./images/كريم كراميل فرابي.JPG" alt="Cream Caramel Frappe" class="menu-item-image">
+                            <img src="./images/كريم كراميل فرابي.JPG" alt="Cream Caramel Frappe"
+                                class="menu-item-image">
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Cream Caramel Frappe</h3>
                                 <p class="menu-item-price">7000 IQD</p>
-                                <p class="menu-item-description">Premium frappe with extra caramel and cream topping.</p>
+                                <p class="menu-item-description">Premium frappe with extra caramel and cream topping.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -802,7 +934,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Strawberry Frappe</h3>
                                 <p class="menu-item-price">7000 IQD</p>
-                                <p class="menu-item-description">Sweet strawberry blended frappe, perfect for fruit lovers.</p>
+                                <p class="menu-item-description">Sweet strawberry blended frappe, perfect for fruit
+                                    lovers.</p>
                             </div>
                         </div>
 
@@ -811,7 +944,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">White Mocha Frappe</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Luxurious white chocolate mixed with coffee, topped with whipped cream.</p>
+                                <p class="menu-item-description">Luxurious white chocolate mixed with coffee, topped
+                                    with whipped cream.</p>
                             </div>
                         </div>
 
@@ -821,7 +955,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Business Frappe</h3>
                                 <p class="menu-item-price">7000 IQD</p>
-                                <p class="menu-item-description">Our signature frappe with a special blend of flavors.</p>
+                                <p class="menu-item-description">Our signature frappe with a special blend of flavors.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -836,7 +971,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Lemon Tea</h3>
                                 <p class="menu-item-price">4000 IQD</p>
-                                <p class="menu-item-description">Refreshing iced tea with a splash of fresh lemon juice.</p>
+                                <p class="menu-item-description">Refreshing iced tea with a splash of fresh lemon juice.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -915,7 +1051,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Matcha Tea Latte</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Japanese green tea powder whisked with steamed milk.</p>
+                                <p class="menu-item-description">Japanese green tea powder whisked with steamed milk.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -930,7 +1067,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Mango</h3>
                                 <p class="menu-item-price">5000 IQD</p>
-                                <p class="menu-item-description">Tropical mango blended with ice for a refreshing treat.</p>
+                                <p class="menu-item-description">Tropical mango blended with ice for a refreshing treat.
+                                </p>
                             </div>
                         </div>
                         <div class="menu-item">
@@ -970,7 +1108,8 @@
                             <div class="menu-item-info">
                                 <h3 class="menu-item-title">Business</h3>
                                 <p class="menu-item-price">6000 IQD</p>
-                                <p class="menu-item-description">Our signature smoothie with a blend of premium fruits.</p>
+                                <p class="menu-item-description">Our signature smoothie with a blend of premium fruits.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -978,7 +1117,7 @@
                 <!-- Back to Categories Button for Drinks Section -->
                 <button class="back-to-top">Back to Categories</button>
             </div>
-            
+
             <!-- =============================================
             DESSERTS MENU SECTION
             ============================================== -->
@@ -993,9 +1132,139 @@
                         <div class="menu-item-info">
                             <h3 class="menu-item-title">Cinnamon Roll</h3>
                             <p class="menu-item-price">4000 IQD</p>
-                            <p class="menu-item-description">Warm chocolate cake with a melting chocolate center, served with vanilla ice cream.</p>
+                            <p class="menu-item-description">Warm chocolate cake with a melting chocolate center, served
+                                with vanilla ice cream.</p>
                         </div>
                     </div>
+
+                    <div class="menu-item">
+                        <img src="https://media.30seconds.com/tip/lg/Basque-Burnt-Cheesecake-Recipe-San-Sebastian-Cheesecake-Is-48939-3dd2d8fd24-1660594493.jpg"
+                            alt="San Sebastián" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">San Sebastián</h3>
+                            <p class="menu-item-price">6000 IQD</p>
+                            <p class="menu-item-description">Traditional Basque-style burnt cheesecake with a creamy
+                                center and caramelized exterior, offering a perfect balance of sweet and smoky flavors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://img.freepik.com/free-photo/delicious-dessert-table_23-2150857740.jpg?ga=GA1.1.948843674.1713174728&semt=ais_hybrid&w=740"
+                            alt="Chocolate Cake" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Chocolate Cake</h3>
+                            <p class="menu-item-price">5000 IQD</p>
+                            <p class="menu-item-description">Rich and moist chocolate cake with a velvety ganache
+                                coating,
+                                perfect for satisfying your chocolate cravings.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://img.freepik.com/free-photo/french-croissants-cardboard-box-cloth_23-2148432404.jpg?ga=GA1.1.948843674.1713174728&semt=ais_hybrid&w=740"
+                            alt="Croissant" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Croissant</h3>
+                            <p class="menu-item-price">3500 IQD</p>
+                            <p class="menu-item-description">Buttery, flaky traditional French croissant with a golden
+                                exterior
+                                and delicate, airy layers inside.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://img.freepik.com/free-photo/side-view-croissant-decorated-with-chocolate-wooden-board_140725-10171.jpg?ga=GA1.1.948843674.1713174728&semt=ais_hybrid&w=740"
+                            alt="Nutella Croissant" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Nutella Croissant</h3>
+                            <p class="menu-item-price">5000 IQD</p>
+                            <p class="menu-item-description">Flaky croissant filled with rich hazelnut chocolate Nutella
+                                spread,
+                                creating the perfect balance of buttery pastry and chocolate decadence.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://img.freepik.com/free-photo/high-angle-tasty-colomba-with-pistachio_23-2149341719.jpg?ga=GA1.1.948843674.1713174728&semt=ais_hybrid&w=740"
+                            alt="Pistachio Croissant" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Pistachio Croissant</h3>
+                            <p class="menu-item-price">5000 IQD</p>
+                            <p class="menu-item-description">Buttery croissant filled with premium pistachio cream,
+                                offering
+                                a nutty, slightly sweet flavor profile with a beautiful green hue.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://img.freepik.com/free-photo/crepe-with-chocolade-strawberry_140725-8395.jpg?ga=GA1.1.948843674.1713174728&semt=ais_hybrid&w=740"
+                            alt="Crepe Nutella" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Crepe Nutella</h3>
+                            <p class="menu-item-price">5000 IQD</p>
+                            <p class="menu-item-description">Thin, delicate French-style crepe generously spread with
+                                Nutella,
+                                folded to perfection and optionally topped with powdered sugar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://hips.hearstapps.com/hmg-prod/images/fruit-tart-recipe-3-1650464619.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*"
+                            alt="Fruit Tart" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Fruit Tart</h3>
+                            <p class="menu-item-price">4500 IQD</p>
+                            <p class="menu-item-description">Buttery shortcrust pastry filled with smooth vanilla
+                                custard and
+                                topped with a colorful arrangement of fresh seasonal fruits.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://placehold.co/400x300" alt="Coffee Jelly" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Coffee Jelly</h3>
+                            <p class="menu-item-price">4000 IQD</p>
+                            <p class="menu-item-description">Refreshing dessert featuring coffee-flavored jelly cubes
+                                served
+                                with a layer of sweet cream, creating a perfect blend of bitter and sweet notes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://www.how-tasty.com/wp-content/uploads/2020/05/IMG_7447-PP.jpg"
+                            alt="Nutella Cookies" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Cookies Filled with Nutella</h3>
+                            <p class="menu-item-price">3500 IQD</p>
+                            <p class="menu-item-description">Soft, chewy cookies with a generous Nutella filling in the
+                                center,
+                                creating a delightful chocolate hazelnut surprise with every bite.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/60a512e897a1d73dda74b9b1/1623933666093-43YM24K12SL6FVNXMN5L/DSC02031.jpg"
+                            alt="Lotus Cookies" class="menu-item-image">
+                        <div class="menu-item-info">
+                            <h3 class="menu-item-title">Cookies Filled with Lotus</h3>
+                            <p class="menu-item-price">3000 IQD</p>
+                            <p class="menu-item-description">Freshly baked cookies with a creamy Lotus Biscoff spread
+                                center,
+                                combining the spiced caramel flavor of the spread with a perfect cookie texture.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- Back to Categories Button for Desserts Section -->
                 <button class="back-to-top">Back to Categories</button>
@@ -1011,35 +1280,43 @@
                 <div class="menu-items">
                     <!-- Hookah Menu Items -->
                     <div class="menu-item">
-                        <img src="https://images.pexels.com/photos/4563735/pexels-photo-4563735.jpeg" alt="English Hookah" class="menu-item-image">
+                        <img src="https://images.pexels.com/photos/4563735/pexels-photo-4563735.jpeg"
+                            alt="English Hookah" class="menu-item-image">
                         <div class="menu-item-info">
                             <h3 class="menu-item-title">English Hookah</h3>
                             <p class="menu-item-price">10,000 IQD</p>
-                            <p class="menu-item-description">Classic English tobacco blend with a smooth, refined flavor profile.</p>
+                            <p class="menu-item-description">Classic English tobacco blend with a smooth, refined flavor
+                                profile.</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://images.pexels.com/photos/5923508/pexels-photo-5923508.jpeg" alt="Business Hookah" class="menu-item-image">
+                        <img src="https://images.pexels.com/photos/5923508/pexels-photo-5923508.jpeg"
+                            alt="Business Hookah" class="menu-item-image">
                         <div class="menu-item-info">
                             <h3 class="menu-item-title">Business Hookah</h3>
                             <p class="menu-item-price">10,000 IQD</p>
-                            <p class="menu-item-description">Our signature house blend with unique flavors, perfect for the distinguished patron.</p>
+                            <p class="menu-item-description">Our signature house blend with unique flavors, perfect for
+                                the distinguished patron.</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://images.pexels.com/photos/4563735/pexels-photo-4563735.jpeg" alt="Gum and Mint Hookah" class="menu-item-image">
+                        <img src="https://images.pexels.com/photos/4563735/pexels-photo-4563735.jpeg"
+                            alt="Gum and Mint Hookah" class="menu-item-image">
                         <div class="menu-item-info">
                             <h3 class="menu-item-title">Gum and Mint Hookah</h3>
                             <p class="menu-item-price">10,000 IQD</p>
-                            <p class="menu-item-description">Refreshing combination of bubblegum sweetness and cool mint for a unique flavor experience.</p>
+                            <p class="menu-item-description">Refreshing combination of bubblegum sweetness and cool mint
+                                for a unique flavor experience.</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://images.pexels.com/photos/5923508/pexels-photo-5923508.jpeg" alt="Lemon and Mint Hookah" class="menu-item-image">
+                        <img src="https://images.pexels.com/photos/5923508/pexels-photo-5923508.jpeg"
+                            alt="Lemon and Mint Hookah" class="menu-item-image">
                         <div class="menu-item-info">
                             <h3 class="menu-item-title">Lemon and Mint Hookah</h3>
                             <p class="menu-item-price">10,000 IQD</p>
-                            <p class="menu-item-description">Zesty lemon blended with cooling mint for a refreshing and invigorating session.</p>
+                            <p class="menu-item-description">Zesty lemon blended with cooling mint for a refreshing and
+                                invigorating session.</p>
                         </div>
                     </div>
                 </div>
@@ -1063,27 +1340,40 @@
                 <!-- About Content -->
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Welcome to Business Lounge Cafe, where productivity meets comfort. We're not just a coffee shop — we're a space designed for thinkers, doers, and dreamers. Whether you're closing a deal, working on your next big idea, or simply enjoying a late-night coffee, this is the place to be.</p>
-                        
-                        <p>Open daily from 7:30 PM to 2:00 AM, we cater to night owls, professionals, and anyone who values quality coffee in a calm, stylish atmosphere. Enjoy fast Wi-Fi, a sleek interior, and a menu crafted to fuel both focus and flavor.</p>
-                        
+                        <p>Welcome to Business Lounge Cafe, where productivity meets comfort. We're not just a coffee
+                            shop — we're a space designed for thinkers, doers, and dreamers. Whether you're closing a
+                            deal, working on your next big idea, or simply enjoying a late-night coffee, this is the
+                            place to be.</p>
+
+                        <p>Open daily from 7:30 PM to 2:00 AM, we cater to night owls, professionals, and anyone who
+                            values quality coffee in a calm, stylish atmosphere. Enjoy fast Wi-Fi, a sleek interior, and
+                            a menu crafted to fuel both focus and flavor.</p>
+
                         <!-- Contact Information -->
                         <div class="about-info">
                             <div class="info-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
                                 <span>Anwar May Street – Opposite Divan Home</span>
                             </div>
                             <div class="info-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
                                 </svg>
                                 <a href="tel:+9647507300071" class="phone-link">+964 750 730 0071</a>
                             </div>
                             <div class="info-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12 6 12 12 16 14"></polyline>
                                 </svg>
@@ -1091,7 +1381,9 @@
                             </div>
                             <div class="info-item">
                                 <a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank" class="map-link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
                                         <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                                     </svg>
                                     <span>Find us on Google Maps</span>
@@ -1111,29 +1403,33 @@
         <div class="footer-content">
             <!-- Social Media Links -->
             <div class="social-links">
-                <a href="https://www.instagram.com/business_lounge_cafe/" title="Instagram"><img src="https://cdn.cdnlogo.com/logos/i/92/instagram.svg" alt="Instagram" class="social-icon"></a>
+                <a href="https://www.instagram.com/business_lounge_cafe/" title="Instagram"><img
+                        src="https://cdn.cdnlogo.com/logos/i/92/instagram.svg" alt="Instagram" class="social-icon"></a>
             </div>
             <!-- Contact Information -->
             <div class="footer-info">
                 <p>Hours: 07:30 PM to 02:00 AM</p>
                 <p>Address: Anwar May Street - Beside H&P Burger</p>
                 <p>Reservations: <a href="tel:+9647507300071" class="phone-link">+964 750 730 0071</a></p>
-                <p><a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank" class="map-link">View Location on Google Maps</a></p>
-                <p class="copyright">&copy;Developed By <a href="https://www.instagram.com/dara01/" class="dev-link">dara01</a></p>
+                <p><a href="https://maps.app.goo.gl/UdqLnqCbUaHE4Wnh8" target="_blank" class="map-link">View Location on
+                        Google Maps</a></p>
+                <p class="copyright">&copy;Developed By <a href="https://www.instagram.com/dara01/"
+                        class="dev-link">dara01</a></p>
             </div>
         </div>
     </footer>
-    
+
     <!-- =============================================
     UTILITY COMPONENTS
     ============================================== -->
     <!-- Floating Back to Top Button -->
     <button id="floating-back-to-top" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
     </button>
-    
+
     <!-- Search Results Overlay -->
     <div class="search-results-overlay" id="searchResultsOverlay">
         <div class="search-results-container">
@@ -1145,8 +1441,9 @@
             <div class="no-results-message" id="noResultsMessage">No items found. Try a different search term.</div>
         </div>
     </div>
-    
+
     <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
