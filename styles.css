@@ -2124,4 +2124,58 @@ footer::before {
   display:grid; place-items:center;
   border:1px solid rgba(0,0,0,.2);
 }
+:root{
+  /* tweak these if you want a different brown */
+  --accent-brown: #C8A46B;
+  --accent-brown-hover:#B89355;
+}
+
+/* Add-to-cart button: brown bg + white text, bigger */
+.options .btn-wide{
+  display:block;
+  width:100%;
+  padding:14px 16px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:14px;
+  background:var(--accent-brown) !important;
+  color:#fff !important;
+  border:1px solid var(--accent-brown-hover) !important;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  -webkit-appearance:none; appearance:none;
+}
+.options .btn-wide:hover{ background:var(--accent-brown-hover) !important; }
+
+/* Quantity stepper: horizontal + bigger */
+.options .stepper{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
+}
+
+.options .stepper .pill{
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius:999px;
+  background:var(--accent-brown) !important;
+  color:#fff !important;
+  border:0 !important;
+  font-size:22px; line-height:1;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  -webkit-appearance:none; appearance:none;
+}
+.options .stepper .pill:hover{ background:var(--accent-brown-hover) !important; }
+
+.options .stepper .qty{
+  min-width:42px;
+  text-align:center;
+  font-size:18px;
+  font-weight:800;
+  color:#e8edf6;
+}
+
 
