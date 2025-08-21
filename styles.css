@@ -2087,4 +2087,41 @@ footer::before {
   }
   body { padding-left: 0; }
 }
+:root{
+  --cart-brown:#C8A46B;   /* tweak to your brand */
+  --cart-brown-hover:#B89355;
+  --cart-text:#0B1016;
+}
+
+/* round icon button */
+.cart-icon-btn{
+  position:relative;
+  display:inline-grid;
+  place-items:center;
+  width:44px; height:44px;
+  border:none;
+  border-radius:999px;
+  background:var(--cart-brown);
+  color:var(--cart-text);
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+  cursor:pointer;
+}
+.cart-icon-btn:hover{ background:var(--cart-brown-hover); }
+
+/* the svg icon */
+.cart-icon{ width:22px; height:22px; }
+
+/* small quantity badge */
+.cart-count{
+  position:absolute;
+  right:-6px; top:-6px;
+  min-width:20px; height:20px;
+  padding:0 6px;
+  background:#fff;
+  color:#000;
+  border-radius:999px;
+  font-size:12px; font-weight:800;
+  display:grid; place-items:center;
+  border:1px solid rgba(0,0,0,.2);
+}
 
