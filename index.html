@@ -21,7 +21,18 @@
     ==== -->
     <nav class="navbar">
         <div class="navbar-content">
-          <button id="cartBtn" class="btn">Cart (0)</button>
+          <button id="cartBtn" class="cart-icon-btn" aria-label="Open cart">
+  <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <!-- simple cart outline -->
+    <path d="M3 5h2l2.4 9.6a2 2 0 0 0 2 1.4h8.7a2 2 0 0 0 2-1.6L22 7H6"
+          fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="10" cy="20" r="1.6" fill="currentColor"/>
+    <circle cx="17" cy="20" r="1.6" fill="currentColor"/>
+  </svg>
+  <span class="cart-count">0</span>
+</button>
+
             <!-- Logo -->
             <div class="nav-logo">
                 <img src="./images/logo.png" alt="Business Lounge Logo" class="nav-logo-img" loading="lazy">
