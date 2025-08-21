@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css"> 
+
+</head> 
 
 <body>
     <!-- ===
@@ -20,6 +21,7 @@
     ==== -->
     <nav class="navbar">
         <div class="navbar-content">
+          <button id="cartBtn" class="btn">Cart (0)</button>
             <!-- Logo -->
             <div class="nav-logo">
                 <img src="./images/logo.png" alt="Business Lounge Logo" class="nav-logo-img" loading="lazy">
@@ -1577,7 +1579,21 @@
     </div>
 
     <!-- JavaScript -->
-  <script src="script.js?v=2"></script>
+   <div id="cartPanel" class="cart hidden">
+    <div class="cart-head">
+      <h2>Your Order</h2>
+      <button id="closeCart" class="icon-btn" aria-label="Close">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-foot">
+      <div class="row">
+        <span>Subtotal</span><strong id="subtotal">0 IQD</strong>
+      </div>
+      <button id="checkoutBtn" class="btn primary">Checkout</button>
+      <p class="hint">Checkout will be wired to n8n in Step 3.</p>
+    </div>
+  </div>
+ <script src="script.js?v=8"></script>
 
 </body>
 
