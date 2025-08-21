@@ -99,11 +99,19 @@
 
   function paint() { findCards().forEach(enhance); }
 
-  function badge() {
-    const total = Object.values(cart).reduce((a, b) => a + b, 0);
-    const btn = document.getElementById("cartBtn");
-    if (btn) btn.textContent = `Cart (${total})`;
+ function badge(){
+  const total = Object.values(cart).reduce((a,b)=>a+b,0);
+  const btn = document.getElementById("cartBtn");
+  if (!btn) return;
+  const countEl = btn.querySelector(".cart-count");
+  if (countEl){
+    countEl.textContent = total;
+  } else {
+    // fallback for old text button
+    btn.textContent = `Cart (${total})`;
   }
+}
+
 
   function drawCart() {
     const itemsEl = document.getElementById("cartItems");
