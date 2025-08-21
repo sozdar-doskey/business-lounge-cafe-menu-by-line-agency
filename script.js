@@ -774,3 +774,220 @@ document.addEventListener('DOMContentLoaded', function() {
         </style>
     `);
 });
+// ====== CONFIG ======
+const SHEET_URL = window.SHEET_URL || ""; // if Step 2 used a const, keep that value
+// If you already pasted a concrete CSV URL earlier, keep it:
+//// const SHEET_URL = "PASTE-YOUR-PUBLISHED-CSV-LINK-HERE";
+
+// ====== STATE ======
+const state = {
+  items: [],
+  cart: JSON.parse(localStorage.getItem("cart") || "{}"), // persist across refreshes
+};
+
+const $  = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+const menuEl      = $("#menu");
+const searchEl    = $("#search");
+const categoriesEl= $("#categories");
+const cartBtn     = $("#cartBtn");
+const cartPanel   = $("#cartPanel");
+const closeCart   = $("#closeCart");
+const cartItems   = $("#cartItems");
+const subtotalEl  = $("#subtotal");
+const checkoutBtn = $("#checkoutBtn");
+
+// ====== DATA LOADING ======
+async function loadItems() {
+  if (!SHEET_URL) {
+    // Fallback demo (if you haven’t wired the sheet yet)
+    state.items = [
+      { id:"latte", name:"Caffè Latte", price:3.5, img:"https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", category:"Coffee", desc:"Velvety espresso with steamed milk." },
+      { id:"americano", name:"Americano", price:2.5, img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085", category:"Coffee", desc:"Espresso + hot water." },
+      { id:"croissant", name:"Butter Croissant", price:2.0, img:"https://images.unsplash.com/photo-1526318472351-c75fcf070305", category:"Bakery", desc:"Flaky, buttery layers." },
+      { id:"brownie", name:"Chocolate Brownie", price:2.2, img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476b", category:"Dessert", desc:"Rich cocoa goodness." },
+    ];
+    return;
+  }
+  const res  = await fetch(SHEET_URL);
+  const text = await res.text();
+  const rows = text.split("\n").map(r => r.split(","));
+  const headers = rows.shift().map(h => h.trim().toLowerCase());
+  state.items = rows
+    .filter(r => r.length > 1)
+    .map(r => {
+      const obj = {};
+      headers.forEach((h,i) => obj[h] = (r[i] || "").trim());
+      obj.price = parseFloat(obj.price || "0");
+      obj.category = obj.category || obj.cat || "";
+      obj.img = obj.img || "";
+      return obj;
+    });
+}
+
+// ====== HELPERS ======
+const getQty = (id) => state.cart[id] || 0;
+function setQty(id, qty) {
+  if (qty <= 0) {
+    delete state.cart[id];
+  } else {
+    state.cart[id] = qty;
+  }
+  persistCart();
+  updateCartBadge();
+  drawCart();
+}
+function addOne(id) { setQty(id, getQty(id) + 1); }
+function subOne(id) { setQty(id, getQty(id) - 1); }
+
+function persistCart() {
+  localStorage.setItem("cart", JSON.stringify(state.cart));
+}
+
+function currency(n) { return "$" + (Number(n)||0).toFixed(2); }
+
+// ====== UI: CATEGORIES ======
+function drawCategories() {
+  const cats = [...new Set(state.items.map(i => i.category).filter(Boolean))];
+  categoriesEl.innerHTML = [`<button data-cat="All">All</button>`]
+    .concat(cats.map(c => `<button data-cat="${c}">${c}</button>`))
+    .join("");
+
+  categoriesEl.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+    const sel = e.target.dataset.cat;
+    renderMenu(searchEl.value.trim(), sel === "All" ? "" : sel);
+  }, { once: true }); // attach once to avoid duplicates
+}
+
+// ====== UI: MENU CARDS (Talabat style) ======
+function cardControlsHTML(item) {
+  const qty = getQty(item.id);
+  if (!qty) {
+    // Show "Add to cart" wide button
+    return `
+      <button class="btn btn-wide" data-add="${item.id}">
+        Add to cart
+      </button>
+    `;
+  }
+  // Show stepper when item is in cart
+  return `
+    <div class="stepper">
+      <button class="pill" data-sub="${item.id}">−</button>
+      <div class="qty">${qty}</div>
+      <button class="pill" data-add="${item.id}">+</button>
+    </div>
+  `;
+}
+
+function renderMenu(q = "", cat = "") {
+  const term = q.toLowerCase();
+  const filtered = state.items.filter(i =>
+    (cat ? i.category === cat : true) &&
+    (i.name?.toLowerCase().includes(term) || i.desc?.toLowerCase().includes(term))
+  );
+
+  if (!filtered.length) {
+    menuEl.innerHTML = `<div class="placeholder">No items match your search.</div>`;
+    return;
+  }
+
+  menuEl.innerHTML = filtered.map(i => `
+    <article class="card">
+      <img src="${i.img}" alt="${i.name}" loading="lazy">
+      <div class="pad">
+        <div class="row">
+          <strong>${i.name || ""}</strong>
+          <span class="price">${currency(i.price)}</span>
+        </div>
+        <div class="muted">${i.category || ""} • ${i.desc || ""}</div>
+        <div class="options">
+          ${cardControlsHTML(i)}
+          ${getQty(i.id) ? `<span class="badge">${getQty(i.id)}</span>` : ""}
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  // Attach button handlers
+  $$("#menu [data-add]").forEach(b => b.addEventListener("click", () => addOne(b.dataset.add)));
+  $$("#menu [data-sub]").forEach(b => b.addEventListener("click", () => subOne(b.dataset.sub)));
+}
+
+// ====== UI: CART ======
+function updateCartBadge() {
+  const count = Object.values(state.cart).reduce((a,b)=>a+b,0);
+  cartBtn.innerHTML = `Cart (${count})`;
+}
+
+function drawCart() {
+  const lines = Object.entries(state.cart);
+  if (!lines.length) {
+    cartItems.innerHTML = `<div class="muted">Your cart is empty.</div>`;
+    subtotalEl.textContent = "$0.00";
+    return;
+  }
+
+  let subtotal = 0;
+  cartItems.innerHTML = lines.map(([id, qty]) => {
+    const it = state.items.find(x => x.id === id) || {};
+    const line = (it.price || 0) * qty;
+    subtotal += line;
+    return `
+      <div class="row" data-line="${id}">
+        <div style="flex:1">
+          <div><strong>${it.name || id}</strong></div>
+          <div class="muted">${currency(it.price)} each</div>
+        </div>
+        <div class="stepper">
+          <button class="pill" data-sub="${id}">−</button>
+          <div class="qty">${qty}</div>
+          <button class="pill" data-add="${id}">+</button>
+        </div>
+        <div style="width:72px; text-align:right">${currency(line)}</div>
+      </div>
+    `;
+  }).join("");
+
+  subtotalEl.textContent = currency(subtotal);
+
+  // Attach handlers in cart too
+  $$("#cartItems [data-add]").forEach(b => b.addEventListener("click", () => { addOne(b.dataset.add); renderMenu(searchEl.value); }));
+  $$("#cartItems [data-sub]").forEach(b => b.addEventListener("click", () => { subOne(b.dataset.sub); renderMenu(searchEl.value); }));
+}
+
+// ====== CHECKOUT (we'll wire to n8n in Step 3) ======
+checkoutBtn.addEventListener("click", () => {
+  const order = {
+    items: Object.entries(state.cart).map(([id, qty]) => {
+      const it = state.items.find(i => i.id === id) || {};
+      return { id, name: it.name || id, price: it.price || 0, qty };
+    }),
+    subtotal: Object.entries(state.cart).reduce((sum, [id, qty]) => {
+      const it = state.items.find(i => i.id === id) || { price: 0 };
+      return sum + (it.price || 0) * qty;
+    }, 0),
+    placed_at: new Date().toISOString(),
+  };
+  alert("✅ Cart ready. Next step we’ll send this to n8n.\n\n" + JSON.stringify(order, null, 2));
+});
+
+// ====== HEADER / SEARCH / CART PANEL ======
+cartBtn.addEventListener("click", () => {
+  drawCart();
+  cartPanel.classList.toggle("hidden");
+});
+closeCart.addEventListener("click", () => cartPanel.classList.add("hidden"));
+searchEl.addEventListener("input", e => renderMenu(e.target.value));
+
+// ====== INIT ======
+async function init() {
+  await loadItems();
+  drawCategories();
+  renderMenu();
+  updateCartBadge();
+  drawCart();
+}
+init();
