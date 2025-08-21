@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuHeaders = document.querySelectorAll('.menu-header');
     const backButtons = document.querySelectorAll('.back-to-top');
     const categoriesSection = document.querySelector('.categories');
-    const menuContainer = document.querySelector('.menu-container');
+    const menuContainer = document.querySelector('.menu-container'); 
     
     // Navbar functionality
     const navbar = document.querySelector('.navbar');
