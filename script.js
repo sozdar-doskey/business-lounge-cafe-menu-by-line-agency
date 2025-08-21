@@ -916,78 +916,135 @@ function renderMenu(q = "", cat = "") {
   $$("#menu [data-sub]").forEach(b => b.addEventListener("click", () => subOne(b.dataset.sub)));
 }
 
-// ====== UI: CART ======
-function updateCartBadge() {
-  const count = Object.values(state.cart).reduce((a,b)=>a+b,0);
-  cartBtn.innerHTML = `Cart (${count})`;
+const SELECTOR_CARD = ".card, .menu-card, .product-card";
+const SELECTOR_TITLE = "h3, h4, .title, .card-title";
+const SELECTOR_PRICE = ".price, .badge, .price-badge"; // optional, best-effort parse
+
+const cart = JSON.parse(localStorage.getItem("cart") || "{}");
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartBadge();
 }
 
+function getIdFor(el) {
+  // Prefer explicit data-id on the card. If missing, slugify the title text.
+  const explicit = el.getAttribute("data-id");
+  if (explicit) return explicit;
+  const t = (el.querySelector(SELECTOR_TITLE)?.textContent || "item").trim().toLowerCase();
+  return t.replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function getPriceFor(el) {
+  // Try to parse a number from a price element like "4500 IQD" or "$5.00"
+  const node = el.querySelector(SELECTOR_PRICE);
+  if (!node) return null;
+  const raw = node.textContent;
+  const m = raw.replace(/,/g, "").match(/([\d.]+)/);
+  return m ? parseFloat(m[1]) : null;
+}
+
+function currency(n) {
+  // Keep simple dollars if you don't use totals; adapt to IQD if you like
+  if (n == null) return "";
+  return "$" + n.toFixed(2);
+}
+
+function qtyOf(id) {
+  return cart[id] || 0;
+}
+
+function setQty(id, q) {
+  if (q <= 0) delete cart[id];
+  else cart[id] = q;
+  saveCart();
+  // Re-render steppers in cards
+  document.querySelectorAll(SELECTOR_CARD).forEach(drawControlsIntoCard);
+  // Re-draw cart panel if you have one
+  if (typeof drawCart === "function") drawCart();
+}
+
+function addOne(id) { setQty(id, qtyOf(id) + 1); }
+function subOne(id) { setQty(id, qtyOf(id) - 1); }
+
+function controlsHTML(id) {
+  const qty = qtyOf(id);
+  if (!qty) {
+    return `<button class="btn btn-wide" data-add="${id}">Add to cart</button>`;
+  }
+  return `
+    <div class="stepper">
+      <button class="pill" data-sub="${id}">−</button>
+      <div class="qty">${qty}</div>
+      <button class="pill" data-add="${id}">+</button>
+    </div>
+  `;
+}
+
+function drawControlsIntoCard(cardEl) {
+  const id = getIdFor(cardEl);
+
+  // Make/locate a container at the bottom of the card for our controls
+  let slot = cardEl.querySelector(".options");
+  if (!slot) {
+    slot = document.createElement("div");
+    slot.className = "options";
+    // try to put under the last text block; fallback to card end
+    (cardEl.querySelector(".pad") || cardEl).appendChild(slot);
+  }
+  slot.innerHTML = controlsHTML(id);
+
+  // Wire events
+  slot.querySelectorAll("[data-add]").forEach(b => {
+    b.onclick = () => addOne(b.getAttribute("data-add"));
+  });
+  slot.querySelectorAll("[data-sub]").forEach(b => {
+    b.onclick = () => subOne(b.getAttribute("data-sub"));
+  });
+}
+
+function updateCartBadge() {
+  const totalQty = Object.values(cart).reduce((a,b)=>a+b,0);
+  const btn = document.querySelector("#cartBtn");
+  if (btn) btn.textContent = `Cart (${totalQty})`;
+}
+
+// OPTIONAL: basic cart panel if you already have #cartItems/#subtotal in your HTML
 function drawCart() {
-  const lines = Object.entries(state.cart);
+  const itemsEl = document.querySelector("#cartItems");
+  const subtotalEl = document.querySelector("#subtotal");
+  if (!itemsEl) return;
+
+  const cards = Array.from(document.querySelectorAll(SELECTOR_CARD));
+  const lines = Object.entries(cart);
   if (!lines.length) {
-    cartItems.innerHTML = `<div class="muted">Your cart is empty.</div>`;
-    subtotalEl.textContent = "$0.00";
+    itemsEl.innerHTML = `<div class="muted">Your cart is empty.</div>`;
+    if (subtotalEl) subtotalEl.textContent = "$0.00";
     return;
   }
 
   let subtotal = 0;
-  cartItems.innerHTML = lines.map(([id, qty]) => {
-    const it = state.items.find(x => x.id === id) || {};
-    const line = (it.price || 0) * qty;
+  itemsEl.innerHTML = lines.map(([id, qty]) => {
+    // Find the matching card for price/title if available
+    const card = cards.find(el => getIdFor(el) === id);
+    const name = card?.querySelector(SELECTOR_TITLE)?.textContent?.trim() || id;
+    const price = getPriceFor(card);
+    const line = price ? price * qty : 0;
     subtotal += line;
     return `
-      <div class="row" data-line="${id}">
+      <div class="row">
         <div style="flex:1">
-          <div><strong>${it.name || id}</strong></div>
-          <div class="muted">${currency(it.price)} each</div>
+          <strong>${name}</strong>
+          ${price ? `<div class="muted">${currency(price)} each</div>` : ""}
         </div>
         <div class="stepper">
           <button class="pill" data-sub="${id}">−</button>
           <div class="qty">${qty}</div>
           <button class="pill" data-add="${id}">+</button>
         </div>
-        <div style="width:72px; text-align:right">${currency(line)}</div>
+        ${price ? `<div style="width:72px; text-align:right">${currency(line)}</div>` : ""}
       </div>
     `;
   }).join("");
 
-  subtotalEl.textContent = currency(subtotal);
-
-  // Attach handlers in cart too
-  $$("#cartItems [data-add]").forEach(b => b.addEventListener("click", () => { addOne(b.dataset.add); renderMenu(searchEl.value); }));
-  $$("#cartItems [data-sub]").forEach(b => b.addEventListener("click", () => { subOne(b.dataset.sub); renderMenu(searchEl.value); }));
-}
-
-// ====== CHECKOUT (we'll wire to n8n in Step 3) ======
-checkoutBtn.addEventListener("click", () => {
-  const order = {
-    items: Object.entries(state.cart).map(([id, qty]) => {
-      const it = state.items.find(i => i.id === id) || {};
-      return { id, name: it.name || id, price: it.price || 0, qty };
-    }),
-    subtotal: Object.entries(state.cart).reduce((sum, [id, qty]) => {
-      const it = state.items.find(i => i.id === id) || { price: 0 };
-      return sum + (it.price || 0) * qty;
-    }, 0),
-    placed_at: new Date().toISOString(),
-  };
-  alert("✅ Cart ready. Next step we’ll send this to n8n.\n\n" + JSON.stringify(order, null, 2));
-});
-
-// ====== HEADER / SEARCH / CART PANEL ======
-cartBtn.addEventListener("click", () => {
-  drawCart();
-  cartPanel.classList.toggle("hidden");
-});
-closeCart.addEventListener("click", () => cartPanel.classList.add("hidden"));
-searchEl.addEventListener("input", e => renderMenu(e.target.value));
-
-// ====== INIT ======
-async function init() {
-  await loadItems();
-  drawCategories();
-  renderMenu();
-  updateCartBadge();
-  drawCart();
-}
-init();
+  if (subtotalEl) subtotalEl.textContent = currency(subtotal);
