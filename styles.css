@@ -2075,8 +2075,8 @@ footer::before {
 #cartPanel.hidden { display: none; }  /* still works if you want to toggle */
 
 /* create space so the sidebar doesn't overlap your content */
-@media (min-width: 1100px) {
-  body { padding-left: 372px; } /* 340px width + 32px gutter */
+@media (min-width: 1400px) {
+  main, .container { margin-left: 24px; }  /* tiny visual gap next to the cart */
 }
 
 /* mobile/tablet: turn it into a bottom panel so it doesn't block content */
