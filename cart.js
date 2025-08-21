@@ -155,38 +155,46 @@
     itemsEl.querySelectorAll("[data-add]").forEach((b) => (b.onclick = () => setQty(b.dataset.add, qty(b.dataset.add) + 1)));
     itemsEl.querySelectorAll("[data-sub]").forEach((b) => (b.onclick = () => setQty(b.dataset.sub, qty(b.dataset.sub) - 1)));
   }
+// === n8n webhook ===
+const WEBHOOK_URL = "https://lineagency.app.n8n.cloud/webhook/cafe-order";
 
-  function wirePanel() {
-    const cartBtn = document.getElementById("cartBtn");
-    const cartPanel = document.getElementById("cartPanel");
-    const closeCart = document.getElementById("closeCart");
-    const checkoutBtn = document.getElementById("checkoutBtn");
-    if (cartBtn && cartPanel) cartBtn.onclick = () => { drawCart(); cartPanel.classList.toggle("hidden"); };
-    if (closeCart && cartPanel) closeCart.onclick = () => cartPanel.classList.add("hidden");
-    if (checkoutBtn) checkoutBtn.onclick = () => {
-      const cards = findCards();
-      const order = {
-        items: Object.entries(cart).map(([id, q]) => {
-          const entry = cards.find(({ card }) => idFor(card) === id);
-          const title = entry?.card?.querySelector(TITLE_SELECTOR)?.textContent?.trim() || id;
-          const price = priceFrom(entry?.priceNode) ?? 0;
-          return { id, name: title, qty: q, price_iqd: price, line_total_iqd: price * q };
-        }),
-        subtotal_iqd: Object.entries(cart).reduce((sum, [id, q]) => {
-          const entry = cards.find(({ card }) => idFor(card) === id);
-          const p = priceFrom(entry?.priceNode) ?? 0;
-          return sum + p * q;
-        }, 0),
-        placed_at: new Date().toISOString(),
-      };
-      alert("✅ Demo only — Step 3 will send this to n8n:\n\n" + JSON.stringify(order, null, 2));
-    };
-  }
+ if (checkoutBtn) checkoutBtn.onclick = async () => {
+  const cards = findCards();
+  const order = {
+    items: Object.entries(cart).map(([id, q]) => {
+      const entry = cards.find(({ card }) => idFor(card) === id);
+      const title = entry?.card?.querySelector(TITLE_SELECTOR)?.textContent?.trim() || id;
+      const price = priceFrom(entry?.priceNode) ?? 0;
+      return { id, name: title, qty: q, price_iqd: price, line_total_iqd: price * q };
+    }),
+    subtotal_iqd: Object.entries(cart).reduce((sum, [id, q]) => {
+      const entry = cards.find(({ card }) => idFor(card) === id);
+      const p = priceFrom(entry?.priceNode) ?? 0;
+      return sum + p * q;
+    }, 0),
+    placed_at: new Date().toISOString(),
+    order_id: "BLC-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+    source: "github_pages"
+  };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    paint();
-    wirePanel();
-    badge();
+  // simple CORS: no preflight (x-www-form-urlencoded)
+  const body = new URLSearchParams({ order: JSON.stringify(order) }).toString();
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body
+    });
+    const data = await res.json().catch(() => ({}));
+    alert("Order sent: " + (data.order_id || order.order_id));
+
+    // clear cart
+    Object.keys(cart).forEach(k => delete cart[k]);
+    saveCart();
     drawCart();
-  });
-})();
+  } catch (e) {
+    console.error(e);
+    alert("Could not send order. Please try again.");
+  }
+};
