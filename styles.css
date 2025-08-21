@@ -2048,3 +2048,43 @@ footer::before {
         font-size: 1.3rem;
     }
 }
+/* === Left sidebar cart (desktop) === */
+#cartPanel {
+  position: fixed;
+  left: 16px;                 /* stick to the left edge */
+  top: 96px;                  /* sit below your navbar */
+  bottom: 16px;               /* full height minus margins */
+  width: 340px;               /* sidebar width */
+  max-height: calc(100vh - 112px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  background: #151a21;
+  border: 1px solid #2b3442;
+  border-radius: 16px;
+  box-shadow: 0 10px 50px rgba(0,0,0,.4);
+  z-index: 9999;
+}
+
+/* inner cart pieces (use ID for specificity so your theme can't override) */
+#cartPanel .cart-head,
+#cartPanel .cart-foot { padding: 12px; border-bottom: 1px solid #232b36; }
+#cartPanel .cart-foot { border-top: 1px solid #232b36; border-bottom: none; }
+#cartPanel .cart-items { max-height: 100%; overflow: auto; padding: 12px; display: grid; gap: 8px; }
+
+#cartPanel.hidden { display: none; }  /* still works if you want to toggle */
+
+/* create space so the sidebar doesn't overlap your content */
+@media (min-width: 1100px) {
+  body { padding-left: 372px; } /* 340px width + 32px gutter */
+}
+
+/* mobile/tablet: turn it into a bottom panel so it doesn't block content */
+@media (max-width: 1099px) {
+  #cartPanel {
+    left: 12px; right: 12px; width: auto;
+    top: auto; bottom: 12px; height: auto; max-height: 55vh;
+  }
+  body { padding-left: 0; }
+}
+
