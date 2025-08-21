@@ -2048,18 +2048,3 @@ footer::before {
         font-size: 1.3rem;
     }
 }
-/* --- Talabat-style add/qty --- */
-.btn-wide { width: 100%; padding: 12px 14px; font-weight: 700; border-radius: 12px; }
-.stepper { display:flex; align-items:center; justify-content:space-between; gap:10px; }
-.stepper .pill {
-  min-width: 36px; height: 36px; display:grid; place-items:center;
-  border-radius: 999px; border:1px solid #2b3442; background: #0e131a; cursor:pointer;
-  font-size: 18px; line-height: 0;
-}
-.stepper .qty { min-width: 34px; text-align:center; font-weight:700; }
-.badge {
-  display:inline-grid; place-items:center; min-width:22px; height:22px; padding:0 6px;
-  background: var(--brand); color:#0b1016; border-radius:999px; font-size:12px; font-weight:800;
-}
-.card .options { margin-top: 6px; display:flex; gap:8px; align-items:center; }
-
