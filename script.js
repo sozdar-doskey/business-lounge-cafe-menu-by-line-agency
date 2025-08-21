@@ -945,10 +945,11 @@ function getPriceFor(el) {
 }
 
 function currency(n) {
-  // Keep simple dollars if you don't use totals; adapt to IQD if you like
   if (n == null) return "";
-  return "$" + n.toFixed(2);
+  // Format with no decimals, since IQD usually doesn’t use fractions
+  return n.toLocaleString("en-US") + " IQD";
 }
+
 
 function qtyOf(id) {
   return cart[id] || 0;
