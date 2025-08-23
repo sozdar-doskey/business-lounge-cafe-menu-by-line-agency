@@ -1,4 +1,4 @@
-console.log("cart.js loaded v14");
+console.log("cart.js loaded v15");
 
 
 (() => {
@@ -133,8 +133,9 @@ function paintCards() {
               ${inCart ? 'style="display:none"' : ''}>Add to cart</button>
 
       <div class="stepper"
-           data-stepper="${id}"
-           style="margin-top:8px; display:${inCart ? 'flex' : 'none'}; align-items:center; gap:12px;">
+           <div class="stepper"
++      data-stepper="${id}"
++      style="margin-top:8px; display:${inCart ? 'flex' : 'none'} !important; align-items:center; gap:12px;">
         <button class="pill" data-sub="${id}">−</button>
         <span class="qty" data-qty="${id}">${qty}</span>
         <button class="pill" data-add="${id}">+</button>
@@ -149,12 +150,11 @@ function paintCards() {
 function toggleCardControls(id) {
   const has = (cart[id] || 0) > 0;
 
-  document.querySelectorAll(`[data-add-first="${id}"]`)
-    .forEach(btn => (btn.style.display = has ? "none" : ""));
++ document.querySelectorAll(`[data-add-first="${id}"]`)
++   .forEach(btn => btn.style.setProperty("display", has ? "none" : "", "important"));
 
-  document.querySelectorAll(`[data-stepper="${id}"]`)
-    .forEach(step => (step.style.display = has ? "flex" : "none"));
-
+  + document.querySelectorAll(`[data-stepper="${id}"]`)
++   .forEach(step => step.style.setProperty("display", has ? "flex" : "none", "important"));
   // keep all visible qty texts in sync
   document.querySelectorAll(`[data-qty="${id}"]`)
     .forEach(el => (el.textContent = has ? cart[id] : 1));
