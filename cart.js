@@ -1,4 +1,5 @@
-/* ---------------- Business Lounge Cafe – cart.js (stable) ---------------- */
+console.log("cart.js loaded v13");
+
 
 (() => {
   console.log("cart.js OK @", new Date().toISOString());
