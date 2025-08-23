@@ -109,30 +109,34 @@ console.log("cart.js loaded v13");
   }
 
   /* ====== UI INJECTION ON CARDS ====== */
-  function paintCards() {
-    const entries = findCards();
+ function paintCards() {
+  const entries = findCards();
 
-    for (const { card, id } of entries) {
-      if (card.dataset.enhanced === "1") continue; // idempotent
+  for (const { card, id } of entries) {
+    if (card.dataset.enhanced === "1") continue; // idempotent
 
-      const body =
-        $(".card-body, .content, .card-content, .description", card) || card;
+    const body =
+      $(".card-body, .content, .card-content, .description", card) || card;
 
-      const wrap = document.createElement("div");
-      wrap.className = "options";
-      wrap.style.marginTop = "12px";
-      wrap.innerHTML = `
-        <button class="btn-wide" data-add="${id}">Add to cart</button>
-        <div class="stepper" style="margin-top:8px; display:flex; align-items:center; gap:12px;">
-          <button class="pill" data-sub="${id}">−</button>
-          <span class="qty" data-qty="${id}">${cart[id] || 1}</span>
-          <button class="pill" data-add="${id}">+</button>
-        </div>
-      `;
-      body.appendChild(wrap);
-      card.dataset.enhanced = "1";
-    }
+    const inCart = (cart[id] || 0) > 0;
+    const qty = inCart ? cart[id] : 1;
+
+    const wrap = document.createElement("div");
+    wrap.className = "options";
+    wrap.style.marginTop = "12px";
+    wrap.innerHTML = `
+      <button class="btn-wide add-first" data-add-first="${id}" ${inCart ? 'style="display:none"' : ''}>Add to cart</button>
+      <div class="stepper" data-stepper="${id}" style="margin-top:8px; align-items:center; gap:12px; ${inCart ? 'display:flex' : 'display:none'};">
+        <button class="pill" data-sub="${id}">−</button>
+        <span class="qty" data-qty="${id}">${qty}</span>
+        <button class="pill" data-add="${id}">+</button>
+      </div>
+    `;
+    body.appendChild(wrap);
+    card.dataset.enhanced = "1";
   }
+}
+
 
   /* ====== CART PANEL RENDER ====== */
   function drawCart() {
