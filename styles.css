@@ -2210,5 +2210,97 @@ footer::before {
   text-align: center;
   border: 2px solid #caa46a;
 }
+/* ============ Cart icon button ============ */
+/* Tweak colors here (kept close to your theme) */
+:root{
+  --cart-gold: #caa36a;         /* gold pill */
+  --cart-gold-hover: #b99354;   /* slightly darker on hover */
+  --cart-ring: rgba(255,255,255,.95);  /* white ring */
+  --cart-outer: rgba(0,0,0,.55);       /* outer dark halo */
+  --cart-icon-color: #121212;          /* icon stroke color */
+}
+
+/* Round pill button */
+.cart-icon-btn{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+
+  background: var(--cart-gold);
+  color: var(--cart-icon-color);
+  border: 2px solid var(--cart-ring);           /* white ring */
+  box-shadow: 0 0 0 2px var(--cart-outer);       /* outer dark ring */
+
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* SVG cart outline inside the button */
+.cart-icon-btn .cart-icon,
+.cart-icon-btn .icon{
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;     /* uses --cart-icon-color */
+  fill: none;
+  stroke-width: 2;
+}
+
+/* Number bubble */
+.cart-icon-btn .badge,
+#cartBadge{
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 999px;
+
+  box-shadow: 0 0 0 2px var(--cart-outer), 0 2px 6px rgba(0,0,0,.25);
+}
+
+/* Nice interactions */
+.cart-icon-btn:hover{
+  background: var(--cart-gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.35), 0 0 0 2px var(--cart-outer);
+}
+
+.cart-icon-btn:active{
+  transform: translateY(0);
+}
+
+/* Keyboard focus */
+.cart-icon-btn:focus-visible{
+  outline: 2px dashed var(--cart-ring);
+  outline-offset: 3px;
+}
+
+/* If you ever leave a text fallback inside the button, hide it in icon mode */
+#cartBtn[data-mode="icon"] .cart-count{
+  display: none !important;
+}
+
+/* Small screens */
+@media (max-width: 600px){
+  .cart-icon-btn{ width: 48px; height: 48px; }
+  .cart-icon-btn .badge{ top: -4px; right: -6px; }
+}
 
 
