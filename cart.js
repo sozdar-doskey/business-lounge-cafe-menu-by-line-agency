@@ -1,3 +1,5 @@
+console.log("cart.js LIVE v=fix-1");
+
 (() => {
   const CART_KEY = "blc_cart";
   const cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
