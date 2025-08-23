@@ -198,15 +198,23 @@ function wireUI() {
 
 /* ================= Cart panel render ================= */
 function drawCart() {
-  // bubble on cart button
-  const n = cartCount();
-  const cartBtn = $("#cartBtn");
-  if (cartBtn) {
-    if (cartBtn.dataset.mode !== "icon") {
-      cartBtn.textContent = `Cart (${n})`;
-    }
-    cartBtn.setAttribute("aria-label", `Cart (${n})`);
+// bubble on cart button
+const n = cartCount();
+const cartBtn = document.getElementById('cartBtn');
+
+if (cartBtn) {
+  // If we have a badge, update it. Otherwise fall back to text mode.
+  const badge = document.getElementById('cartBadge');
+
+  if (badge) {
+    badge.textContent = n;                         // update the little white bubble
+  } else if (cartBtn.dataset.mode !== 'icon') {
+    cartBtn.textContent = `Cart (${n})`;          // fallback for non-icon layout
   }
+
+  cartBtn.setAttribute('aria-label', `Cart (${n})`);
+}
+
 
   const itemsEl    = $("#cartItems");
   const subtotalEl = $("#subtotal");
