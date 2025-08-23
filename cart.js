@@ -100,13 +100,15 @@ console.log("cart.js loaded v13");
     return Object.values(cart).reduce((s, q) => s + Number(q || 0), 0);
   }
 
-  function setQty(id, q) {
-    q = Number(q);
-    if (q <= 0) delete cart[id];
-    else cart[id] = q;
-    save();
-    drawCart();
-  }
+function setQty(id, q) {
+  q = Number(q);
+  if (q <= 0) delete cart[id];
+  else cart[id] = q;
+  save();
+  drawCart();
+  toggleCardControls(id);   // <— add this
+}
+
 
   /* ====== UI INJECTION ON CARDS ====== */
  function paintCards() {
@@ -248,42 +250,46 @@ console.log("cart.js loaded v13");
   }
 
   /* ====== WIRING ====== */
-  function wireUI() {
-    const cartBtn = $("#cartBtn");
-    const cartPanel = $("#cartPanel");
-    const closeCart = $("#closeCart");
-    const checkoutBtn = $("#checkoutBtn");
+ function wireUI() {
+  const cartBtn   = $("#cartBtn");
+  const cartPanel = $("#cartPanel");
+  const closeCart = $("#closeCart");
+  const checkoutBtn = $("#checkoutBtn");
 
-    if (cartBtn && cartPanel) {
-      cartBtn.onclick = () => {
-        drawCart();
-        cartPanel.classList.toggle("hidden");
-      };
-    }
-    if (closeCart && cartPanel) {
-      closeCart.onclick = () => cartPanel.classList.add("hidden");
-    }
-    if (checkoutBtn) {
-      checkoutBtn.onclick = checkout;
-    }
-
-    // delegate plus/minus on the whole document
-    document.addEventListener("click", (e) => {
-      const add = e.target.closest("[data-add]");
-      const sub = e.target.closest("[data-sub]");
-      if (!add && !sub) return;
-
-      const id = (add || sub).getAttribute("data-add") || (add || sub).getAttribute("data-sub");
-      if (!id) return;
-
-      const current = Number(cart[id] || 0) || 0;
-      if (add) setQty(id, current + 1);
-      if (sub) setQty(id, current - 1);
-
-      // also update inline qty text if present
-      $$(`[data-qty="${id}"]`).forEach((el) => (el.textContent = cart[id] || 0));
-    });
+  if (cartBtn && cartPanel) {
+    cartBtn.onclick = () => {
+      drawCart();
+      cartPanel.classList.toggle("hidden");
+    };
   }
+  if (closeCart && cartPanel) {
+    closeCart.onclick = () => cartPanel.classList.add("hidden");
+  }
+  if (checkoutBtn) {
+    checkoutBtn.onclick = checkout;
+  }
+
+  // POINT B: single delegated handler for add-first / add / sub
+  document.addEventListener("click", (e) => {
+    // First add — show the stepper and set qty to 1
+    const first = e.target.closest("[data-add-first]");
+    if (first) {
+      const id = first.getAttribute("data-add-first");
+      setQty(id, (cart[id] || 0) + 1);
+      return;
+    }
+
+    // Subsequent +/− on cards or in cart panel
+    const add = e.target.closest("[data-add]");
+    const sub = e.target.closest("[data-sub]");
+    if (!add && !sub) return;
+
+    const id = (add || sub).getAttribute("data-add") || (add || sub).getAttribute("data-sub");
+    const current = Number(cart[id] || 0) || 0;
+    if (add) setQty(id, current + 1);
+    if (sub) setQty(id, current - 1);
+  });
+}
 
   /* ====== BOOT ====== */
   document.addEventListener(
