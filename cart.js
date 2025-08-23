@@ -38,23 +38,50 @@
     return m ? Number(m[0]) : 0;
   }
 
-  function findCards() {
-    // Be generous: any element that contains a title + price is a "card"
-    const cards = $$(CARD_SELECTOR);
-    // If your cards don’t use those classes, fall back to any element that has both title+price children
-    const fallbacks = $$(".card, [data-card]").filter((c) => !cards.includes(c));
-    const all = cards.concat(fallbacks);
+ function findCards() {
+  // Find any element that looks like a price badge
+  const priceNodes = Array.from(
+    document.querySelectorAll('.price-badge, [class*="price"]')
+  ).filter(n => {
+    const raw = (n.getAttribute('data-price') || n.textContent || '').replace(/,/g,'');
+    return /\d/.test(raw) && raw.length < 20; // must contain a number
+  });
 
-    return all.map((card) => {
-      const titleNode = $(TITLE_SELECTOR, card);
-      const priceNode = $(PRICE_SELECTOR, card);
-      const name = text(titleNode);
-      const id = card.getAttribute("data-id") || slug(name);
-      if (!card.getAttribute("data-id")) card.setAttribute("data-id", id);
-      const price = parsePrice(priceNode);
-      return { card, id, name, price, priceNode, titleNode };
-    });
-  }
+  const seen = new Set();
+  const entries = [];
+
+  priceNodes.forEach(pn => {
+    // Try to locate the visual "card" container near this price
+    const container =
+      pn.closest('.menu-card, .card, .item-card, .menu__item, article, .grid-item, .product, .box, .item, .menu-item, .col') ||
+      pn.parentElement?.parentElement ||
+      pn.parentElement;
+
+    if (!container || seen.has(container)) return;
+
+    // Title inside the same container
+    const titleNode =
+      container.querySelector('h3, h4, .title, .card-title') ||
+      container.querySelector('h2');
+
+    const name = (titleNode?.textContent || '').trim();
+    const id = container.getAttribute('data-id') || slug(name);
+    if (!container.getAttribute('data-id')) container.setAttribute('data-id', id);
+
+    // Use data-price if present; otherwise parse the number from text
+    const price = parsePrice(pn);
+    if (!pn.getAttribute('data-price') && price) pn.setAttribute('data-price', price);
+
+    entries.push({ card: container, id, name, price, priceNode: pn, titleNode });
+    seen.add(container);
+  });
+
+  // Debug – see how many cards were found
+  console.log('cart.js: found cards =', entries.length);
+
+  return entries;
+}
+
 
   function save() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
