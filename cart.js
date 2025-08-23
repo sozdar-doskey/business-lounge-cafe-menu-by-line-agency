@@ -1,4 +1,4 @@
-console.log("cart.js loaded v13");
+console.log("cart.js loaded v14");
 
 
 (() => {
@@ -111,7 +111,8 @@ function setQty(id, q) {
 
 
   /* ====== UI INJECTION ON CARDS ====== */
- function paintCards() {
+/* ===== UI INJECTION ON CARDS ===== */
+function paintCards() {
   const entries = findCards();
 
   for (const { card, id } of entries) {
@@ -127,8 +128,13 @@ function setQty(id, q) {
     wrap.className = "options";
     wrap.style.marginTop = "12px";
     wrap.innerHTML = `
-      <button class="btn-wide add-first" data-add-first="${id}" ${inCart ? 'style="display:none"' : ''}>Add to cart</button>
-      <div class="stepper" data-stepper="${id}" style="margin-top:8px; align-items:center; gap:12px; ${inCart ? 'display:flex' : 'display:none'};">
+      <button class="btn-wide add-first"
+              data-add-first="${id}"
+              ${inCart ? 'style="display:none"' : ''}>Add to cart</button>
+
+      <div class="stepper"
+           data-stepper="${id}"
+           style="margin-top:8px; display:${inCart ? 'flex' : 'none'}; align-items:center; gap:12px;">
         <button class="pill" data-sub="${id}">−</button>
         <span class="qty" data-qty="${id}">${qty}</span>
         <button class="pill" data-add="${id}">+</button>
@@ -139,6 +145,76 @@ function setQty(id, q) {
   }
 }
 
+/* ===== SHOW/HIDE CONTROLS FOR ONE ITEM ===== */
+function toggleCardControls(id) {
+  const has = (cart[id] || 0) > 0;
+
+  document.querySelectorAll(`[data-add-first="${id}"]`)
+    .forEach(btn => (btn.style.display = has ? "none" : ""));
+
+  document.querySelectorAll(`[data-stepper="${id}"]`)
+    .forEach(step => (step.style.display = has ? "flex" : "none"));
+
+  // keep all visible qty texts in sync
+  document.querySelectorAll(`[data-qty="${id}"]`)
+    .forEach(el => (el.textContent = has ? cart[id] : 1));
+}
+
+/* ===== UPDATE QTY + PERSIST + REDRAW ===== */
+function setQty(id, q) {
+  q = Number(q);
+  if (q <= 0) delete cart[id];
+  else cart[id] = q;
+
+  save();         // your existing persist helper
+  drawCart();     // update the panel + bubble
+  toggleCardControls(id); // swap Add↔Stepper on the card
+}
+
+/* ===== WIRING ===== */
+function wireUI() {
+  const cartBtn    = $("#cartBtn");
+  const cartPanel  = $("#cartPanel");
+  const closeCart  = $("#closeCart");
+  const checkoutBtn = $("#checkoutBtn");
+
+  if (cartBtn && cartPanel) {
+    cartBtn.onclick = () => {
+      drawCart();
+      cartPanel.classList.toggle("hidden");
+    };
+  }
+  if (closeCart && cartPanel) {
+    closeCart.onclick = () => cartPanel.classList.add("hidden");
+  }
+  if (checkoutBtn) {
+    checkoutBtn.onclick = checkout; // your existing checkout()
+  }
+
+  // One delegated listener handles: first add, + and −
+  document.addEventListener("click", (e) => {
+    // 1) First "Add to cart" → set qty to 1 and reveal stepper
+    const first = e.target.closest("[data-add-first]");
+    if (first) {
+      const id = first.getAttribute("data-add-first");
+      setQty(id, (cart[id] || 0) + 1);
+      return;
+    }
+
+    // 2) Subsequent + / − (on cards or in the cart panel)
+    const add = e.target.closest("[data-add]");
+    const sub = e.target.closest("[data-sub]");
+    if (!add && !sub) return;
+
+    const id =
+      (add && add.getAttribute("data-add")) ||
+      (sub && sub.getAttribute("data-sub"));
+
+    const current = Number(cart[id] || 0) || 0;
+    if (add) setQty(id, current + 1);
+    if (sub) setQty(id, current - 1);
+  });
+}
 
   /* ====== CART PANEL RENDER ====== */
   function drawCart() {
