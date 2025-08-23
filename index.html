@@ -21,16 +21,15 @@
     ==== -->
     <nav class="navbar">
         <div class="navbar-content">
-          <button id="cartBtn" class="cart-icon-btn" aria-label="Open cart">
-  <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <!-- simple cart outline -->
-    <path d="M3 5h2l2.4 9.6a2 2 0 0 0 2 1.4h8.7a2 2 0 0 0 2-1.6L22 7H6"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="10" cy="20" r="1.6" fill="currentColor"/>
-    <circle cx="17" cy="20" r="1.6" fill="currentColor"/>
+        <button id="cartBtn" class="cart-icon" data-mode="icon" aria-label="Cart (0)">
+  <!-- keep your existing SVG art (path/circles) but give the <svg> this class + viewBox -->
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+    <!-- Your current SVG content goes here. Example: -->
+    <path d="M3 4h2l2.3 9.2A3 3 0 0 0 10.2 16h6.9a3 3 0 0 0 2.9-2.2l1.7-6.1A1 1 0 0 0 20.7 6H7.6l-.4-2H3Z"/>
   </svg>
-  <span class="cart-count">0</span>
+
+  <!-- badge bubble that will show the count -->
+  <span id="cartBadge" class="badge">0</span>
 </button>
 
             <!-- Logo -->
