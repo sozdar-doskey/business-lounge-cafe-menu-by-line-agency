@@ -2177,5 +2177,38 @@ footer::before {
   font-weight:800;
   color:#e8edf6;
 }
+/* Cart icon button */
+.cart-icon{
+  position: relative;
+  width: 46px; height: 46px;
+  border-radius: 999px;
+  background: #caa46a;             /* your brown/gold */
+  border: 2px solid #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* The svg inside the button */
+.cart-icon .icon{
+  width: 22px; height: 22px;
+  fill: #1a1a1a;                    /* dark */
+}
+
+/* The little number badge */
+.cart-icon .badge{
+  position: absolute;
+  top: -6px; right: -6px;
+  min-width: 20px; height: 20px; line-height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #caa46a;
+}
 
 
