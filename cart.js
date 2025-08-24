@@ -9,6 +9,37 @@ console.log("cart.js loaded", new Date().toISOString());
 /* =================== CONFIG =================== */
 const WEBHOOK_URL = "https://lineagency.app.n8n.cloud/webhook/cafe-order";
 const STORAGE_KEY  = "cafe_cart_v1";
+// ----- Locked table id (from QR) -----
+const TABLE_LOCK_KEY = "cafe_table_id";
+
+// URL keys we accept (use ?table=T01 in your QR)
+const TABLE_PARAM_KEYS = ["table","t","qr","desk"];
+
+// Optional override: add ?reassign=1 to a URL if staff need to reassign a device
+const REASSIGN_FLAG = "reassign";
+
+function resolveTableIdLocked() {
+  const sp = new URLSearchParams(location.search);
+  const saved = (localStorage.getItem(TABLE_LOCK_KEY) || "").trim();
+
+  // allow reassign only if ?reassign=1 is present
+  const allowReassign = sp.has(REASSIGN_FLAG);
+
+  if (saved && !allowReassign) return saved;
+
+  // otherwise read from URL (first match wins)
+  for (const k of TABLE_PARAM_KEYS) {
+    const v = (sp.get(k) || "").trim();
+    if (v) {
+      localStorage.setItem(TABLE_LOCK_KEY, v);
+      return v;
+    }
+  }
+  // default for walk-ins (no table)
+  return "takeaway";
+}
+
+const TABLE_ID = resolveTableIdLocked();
 
 // Flexible selectors for your theme
 const CARD_SELECTOR  = ".menu-card, .card, .item-card";
@@ -282,6 +313,7 @@ async function checkout() {
   const payload = {
     order_id:  "BLC-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
     placed_at: new Date().toISOString(),
+     table_id: TABLE_ID,
     subtotal_iqd: items.reduce((s, i) => s + i.line_total_iqd, 0),
     source: "github_pages",
     items,
