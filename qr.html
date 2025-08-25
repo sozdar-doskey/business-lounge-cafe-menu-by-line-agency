@@ -1,1 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Table QR Codes</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0f1113; --panel:#13161a; --text:#e9edf1; --muted:#b6c0ca; --accent:#caa46a;
+    }
+    body{margin:0;padding:24px;background:var(--bg);color:var(--text);font:15px/1.4 system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    h1{margin:0 0 14px;font-size:20px}
+    .bar{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+    .bar button{padding:8px 12px;border-radius:10px;border:1px solid #333;background:var(--accent);color:#111;font-weight:800;cursor:pointer}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{background:var(--panel);border:1px solid #222;border-radius:14px;padding:14px;text-align:center}
+    .title{font-weight:800;margin-bottom:6px}
+    .url{font-size:12px;color:var(--muted);word-break:break-all;margin-top:8px}
+    .qr{width:180px;height:180px;background:#fff;border-radius:8px;margin:10px auto;display:flex;align-items:center;justify-content:center}
+    .actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
+    .link{background:#0b0d10;color:var(--text);border:1px solid #2a2d31;border-radius:8px;padding:7px 10px;text-decoration:none;cursor:pointer}
+    @media print { .bar{display:none} .card{break-inside:avoid} body{background:#fff;color:#000} }
+  </style>
+</head>
+<body>
+  <h1>Table QR Codes</h1>
+  <div class="bar">
+    <button onclick="window.print()">Print</button>
+    <div id="meta" style="margin-left:auto;color:#9aa3ad;font-size:13px"></div>
+  </div>
+
+  <div id="grid" class="grid"></div>
+
+  <!-- QRCode library (tiny, no build step) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-M3Ygl1EOB5c7QKqGQk5V7tQh7pS6b+sgmGTWzWm4nJ5xZ4K9C6XhU7FeyJ5C3JpR5f9N6kS7F9Y7c1b9M1xKQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    // ======= EDIT THIS: your live menu URL (no query, keep trailing /) =======
+    const BASE_URL = "https://YOUR-USERNAME.github.io/YOUR-REPO/"; // <- change this
+
+    // 12 tables: T01..T12
+    const TABLES = Array.from({length:12}, (_,i) => "T" + String(i+1).padStart(2,"0"));
+    const PARAM_KEY = "table"; // your cart.js accepts table/t/qr/desk; we'll use 'table'
+
+    function makeURL(base, key, value) {
+      const u = new URL(base);
+      u.searchParams.set(key, value);
+      return u.toString();
+    }
+
+    function downloadCanvas(canvas, filename) {
+      const a = document.createElement('a');
+      a.download = filename;
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    }
+
+    const grid = document.getElementById("grid");
+    TABLES.forEach(tbl => {
+      const url = makeURL(BASE_URL, PARAM_KEY, tbl);
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = "Table " + tbl;
+      card.appendChild(title);
+
+      const qrWrap = document.createElement("div");
+      qrWrap.className = "qr";
+      const inner = document.createElement("div");
+      qrWrap.appendChild(inner);
+      card.appendChild(qrWrap);
+
+      new QRCode(inner, { text: url, width: 170, height: 170, correctLevel: QRCode.CorrectLevel.M });
+
+      const urlEl = document.createElement("div");
+      urlEl.className = "url";
+      urlEl.textContent = url;
+      card.appendChild(urlEl);
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+
+      const btnDl = document.createElement("button");
+      btnDl.className = "link";
+      btnDl.textContent = "Download PNG";
+      btnDl.onclick = () => {
+        const canvas = inner.querySelector("canvas");
+        const img = inner.querySelector("img");
+        if (canvas) downloadCanvas(canvas, tbl + ".png");
+        else if (img) {
+          const a = document.createElement("a"); a.download = tbl + ".png"; a.href = img.src; a.click();
+        }
+      };
+      actions.appendChild(btnDl);
+
+      const aOpen = document.createElement("a");
+      aOpen.className = "link";
+      aOpen.href = url; aOpen.target = "_blank"; aOpen.textContent = "Open";
+      actions.appendChild(aOpen);
+
+      card.appendChild(actions);
+      grid.appendChild(card);
+    });
+
+    document.getElementById("meta").textContent = "Base: " + BASE_URL + " • Tables: " + TABLES.join(", ");
+  </script>
+</body>
+</html>
 
