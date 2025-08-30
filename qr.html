@@ -5,9 +5,7 @@
   <title>Table QR Codes</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    :root {
-      --bg:#0f1113; --panel:#13161a; --text:#e9edf1; --muted:#b6c0ca; --accent:#caa46a;
-    }
+    :root { --bg:#0f1113; --panel:#13161a; --text:#e9edf1; --muted:#b6c0ca; --accent:#caa46a; }
     body{margin:0;padding:24px;background:var(--bg);color:var(--text);font:15px/1.4 system-ui,Segoe UI,Roboto,Arial,sans-serif}
     h1{margin:0 0 14px;font-size:20px}
     .bar{display:flex;gap:10px;align-items:center;margin-bottom:16px}
@@ -21,6 +19,9 @@
     .link{background:#0b0d10;color:var(--text);border:1px solid #2a2d31;border-radius:8px;padding:7px 10px;text-decoration:none;cursor:pointer}
     @media print { .bar{display:none} .card{break-inside:avoid} body{background:#fff;color:#000} }
   </style>
+
+  <!-- QRCode library (no SRI to avoid blocking) -->
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 </head>
 <body>
   <h1>Table QR Codes</h1>
@@ -31,81 +32,90 @@
 
   <div id="grid" class="grid"></div>
 
-  <!-- QRCode library (tiny, no build step) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-M3Ygl1EOB5c7QKqGQk5V7tQh7pS6b+sgmGTWzWm4nJ5xZ4K9C6XhU7FeyJ5C3JpR5f9N6kS7F9Y7c1b9M1xKQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    // ======= EDIT THIS: your live menu URL (no query, keep trailing /) =======
-   const BASE_URL = "https://sozdar-doskey.github.io/line-agency-business-lounge-cafe-menu/";
+    window.addEventListener('DOMContentLoaded', () => {
+      // CHANGE ONLY THIS if you move the site elsewhere. Keep trailing slash.
+      const BASE_URL = "https://sozdar-doskey.github.io/line-agency-business-lounge-cafe-menu/";
+      const TABLES   = Array.from({length:12}, (_i) => "T" + String(_i+1).padStart(2,"0"));
+      const PARAM_KEY = "table"; // cart.js reads ?table=Txx
 
+      function makeURL(base, key, value) {
+        const u = new URL(base);           // must be absolute, no leading space, trailing /
+        u.searchParams.set(key, value);
+        return u.toString();
+      }
 
-    // 12 tables: T01..T12
-    const TABLES = Array.from({length:12}, (_,i) => "T" + String(i+1).padStart(2,"0"));
-    const PARAM_KEY = "table"; // your cart.js accepts table/t/qr/desk; we'll use 'table'
+      function downloadCanvas(canvas, filename) {
+        const a = document.createElement('a');
+        a.download = filename;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      }
 
-    function makeURL(base, key, value) {
-      const u = new URL( base);
-      u.searchParams.set(key, value);
-      return u.toString();
-    }
+      const grid = document.getElementById("grid");
 
-    function downloadCanvas(canvas, filename) {
-      const a = document.createElement('a');
-      a.download = filename;
-      a.href = canvas.toDataURL('image/png');
-      a.click();
-    }
+      // Safety: if QRCode lib failed to load, show a message
+      if (typeof QRCode === 'undefined') {
+        grid.innerHTML = "<p style='color:#f66'>QR library didn’t load. Check network/CSP. Try hard refresh.</p>";
+        return;
+      }
 
-    const grid = document.getElementById("grid");
-    TABLES.forEach(tbl => {
-      const url = makeURL(BASE_URL, PARAM_KEY, tbl);
-      const card = document.createElement("div");
-      card.className = "card";
+      TABLES.forEach(tbl => {
+        const url  = makeURL(BASE_URL, PARAM_KEY, tbl);
+        const card = document.createElement("div");
+        card.className = "card";
 
-      const title = document.createElement("div");
-      title.className = "title";
-      title.textContent = "Table " + tbl;
-      card.appendChild(title);
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = "Table " + tbl;
+        card.appendChild(title);
 
-      const qrWrap = document.createElement("div");
-      qrWrap.className = "qr";
-      const inner = document.createElement("div");
-      qrWrap.appendChild(inner);
-      card.appendChild(qrWrap);
+        const qrWrap = document.createElement("div");
+        qrWrap.className = "qr";
+        const inner = document.createElement("div");
+        qrWrap.appendChild(inner);
+        card.appendChild(qrWrap);
 
-      new QRCode(inner, { text: url, width: 170, height: 170, correctLevel: QRCode.CorrectLevel.M });
+        new QRCode(inner, { text: url, width: 170, height: 170, correctLevel: QRCode.CorrectLevel.M });
 
-      const urlEl = document.createElement("div");
-      urlEl.className = "url";
-      urlEl.textContent = url;
-      card.appendChild(urlEl);
+        const urlEl = document.createElement("div");
+        urlEl.className = "url";
+        urlEl.textContent = url;
+        card.appendChild(urlEl);
 
-      const actions = document.createElement("div");
-      actions.className = "actions";
+        const actions = document.createElement("div");
+        actions.className = "actions";
 
-      const btnDl = document.createElement("button");
-      btnDl.className = "link";
-      btnDl.textContent = "Download PNG";
-      btnDl.onclick = () => {
-        const canvas = inner.querySelector("canvas");
-        const img = inner.querySelector("img");
-        if (canvas) downloadCanvas(canvas, tbl + ".png");
-        else if (img) {
-          const a = document.createElement("a"); a.download = tbl + ".png"; a.href = img.src; a.click();
-        }
-      };
-      actions.appendChild(btnDl);
+        const btnDl = document.createElement("button");
+        btnDl.className = "link";
+        btnDl.textContent = "Download PNG";
+        btnDl.onclick = () => {
+          const canvas = inner.querySelector("canvas");
+          const img    = inner.querySelector("img");
+          if (canvas) {
+            downloadCanvas(canvas, tbl + ".png");
+          } else if (img) {
+            const a = document.createElement("a");
+            a.download = tbl + ".png";
+            a.href = img.src;
+            a.click();
+          }
+        };
+        actions.appendChild(btnDl);
 
-      const aOpen = document.createElement("a");
-      aOpen.className = "link";
-      aOpen.href = url; aOpen.target = "_blank"; aOpen.textContent = "Open";
-      actions.appendChild(aOpen);
+        const aOpen = document.createElement("a");
+        aOpen.className = "link";
+        aOpen.href = url;
+        aOpen.target = "_blank";
+        aOpen.textContent = "Open";
+        actions.appendChild(aOpen);
 
-      card.appendChild(actions);
-      grid.appendChild(card);
+        card.appendChild(actions);
+        grid.appendChild(card);
+      });
+
+      document.getElementById("meta").textContent = "Base: " + BASE_URL + " • Tables: " + TABLES.join(", ");
     });
-
-    document.getElementById("meta").textContent = "Base: " + BASE_URL + " • Tables: " + TABLES.join(", ");
   </script>
 </body>
 </html>
-
