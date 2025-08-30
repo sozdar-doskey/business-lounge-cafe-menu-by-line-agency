@@ -36,7 +36,9 @@
     window.addEventListener('DOMContentLoaded', () => {
       // CHANGE ONLY THIS if you move the site elsewhere. Keep trailing slash.
       const BASE_URL = "https://sozdar-doskey.github.io/line-agency-business-lounge-cafe-menu/";
-      const TABLES   = Array.from({length:12}, (_i) => "T" + String(_i+1).padStart(2,"0"));
+      // 12 tables: T01..T12
+const TABLES = Array.from({ length: 12 }, (_, idx) => `T${(idx + 1).toString().padStart(2, '0')}`);
+
       const PARAM_KEY = "table"; // cart.js reads ?table=Txx
 
       function makeURL(base, key, value) {
